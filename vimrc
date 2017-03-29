@@ -215,6 +215,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-sensible'
 Plugin 'python-rope/ropevim'
 Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'vim-syntastic/syntastic'
 Plugin 'vhdirk/vim-cmake'
 Plugin 'taketwo/vim-ros'
 
