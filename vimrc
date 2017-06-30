@@ -262,7 +262,7 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
-let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_checkers = ['flake8', 'pydocstyle']
 " to ensure flake8 checks for python 2 code (calling only 'flake8' gives the
 " python 3 version):
 let g:syntastic_python_flake8_exe = 'python -m flake8'
