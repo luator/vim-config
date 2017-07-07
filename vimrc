@@ -211,6 +211,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-sensible'
 Plugin 'python-rope/ropevim'
@@ -218,6 +219,8 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'vhdirk/vim-cmake'
 Plugin 'taketwo/vim-ros'
+Plugin 'vim-voom/VOoM'
+Plugin 'vim-latex/vim-latex'
 
 call vundle#end()
 " Brief Vundle help
