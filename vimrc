@@ -191,11 +191,11 @@ au BufNewFile,BufRead *.launch set filetype=xml
 " Misc
 """""""
 
-" set cursor always to first line in git commit message
-autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
-
 " Look for ctags file in current directory and climb up to root if not found
 set tags=./tags;/
+
+" Set spell check language to british english.
+set spelllang=en_gb
 
 
 " Plugins
