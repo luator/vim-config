@@ -194,7 +194,8 @@ au BufNewFile,BufRead *.launch set filetype=xml
 " Look for ctags file in current directory and climb up to root if not found
 set tags=./tags;/
 
-" Set spell check language to british english.
+" Enable spell check and set language to british english.
+set spell
 set spelllang=en_gb
 
 
