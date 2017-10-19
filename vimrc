@@ -270,6 +270,7 @@ let g:syntastic_python_checkers = ['flake8', 'pydocstyle']
 " to ensure flake8 checks for python 2 code (calling only 'flake8' gives the
 " python 3 version):
 let g:syntastic_python_flake8_exe = 'python -m flake8'
+let g:syntastic_python_pydocstyle_args = "--match='.*'"
 let g:syntastic_c_checkers = []
 let g:syntastic_cpp_checkers = []
 
