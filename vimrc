@@ -284,3 +284,10 @@ let ropevim_enable_autoimport = 0
 """ CtrlP
 
 let g:ctrlp_custom_ignore = '\v(\.pyc|\~|build)$'  " ignore *.pyc files
+
+
+""" vim-ros
+let g:ros_make = 'current'  " [current|all]
+let g:ros_build_system = 'catkin-tools'  " [catkin|rosbuild|catkin-tools]
+" Additional options for catkin_make (i.e '-j4 -DCMAKE_BUILD_TYPE=Debug' ...)
+"let g:ros_catkin_make_options = ''
