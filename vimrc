@@ -229,6 +229,7 @@ Plugin 'taketwo/vim-ros'
 Plugin 'vim-voom/VOoM'
 Plugin 'vim-latex/vim-latex'
 Plugin 'rhysd/vim-clang-format'
+Plugin 'mtth/scratch.vim'
 
 call vundle#end()
 " Brief Vundle help
