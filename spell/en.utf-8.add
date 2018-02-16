@@ -29,3 +29,16 @@ MSPD
 parallelized
 Widmaier
 MPMSE
+Costmap
+costmap
+param
+ROS
+lidar
+costmaps
+YAML
+odometry
+anymore
+numpy
+PoseStamped
+uint16
+uint8
