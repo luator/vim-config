@@ -123,7 +123,7 @@ set statusline=[%n]\ %m%<%.99f\ %h%w%r%y%=%-16(\ %l,%c%V\ %)%P
 
 " set colorscheme
 set background=dark
-"se t_Co=16 " Fix for solarized (http://stackoverflow.com/a/5561823/2095383)
+se t_Co=16 " Fix for solarized (http://stackoverflow.com/a/5561823/2095383)
 colorscheme solarized
 
 
@@ -131,6 +131,10 @@ colorscheme solarized
 """""""""""""""""""""""""
 
 if has('gui_running')
+  " always show tab bar (workaround for the status-line disappears on maximized
+  " window bug, https://unix.stackexchange.com/a/31317/108576).
+  set showtabline=2
+
   " Set font for gvim
   set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
 
@@ -223,6 +227,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-sensible'
 Plugin 'python-rope/ropevim'
 Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'tell-k/vim-autopep8'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'vhdirk/vim-cmake'
 Plugin 'taketwo/vim-ros'
@@ -230,6 +235,9 @@ Plugin 'vim-voom/VOoM'
 Plugin 'vim-latex/vim-latex'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'mtth/scratch.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Bundle 'Rykka/riv.vim'
 
 call vundle#end()
 " Brief Vundle help
@@ -274,13 +282,15 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
-let g:syntastic_python_checkers = ['flake8', 'pydocstyle']
+"let g:syntastic_python_checkers = ['flake8', 'pydocstyle']
+let g:syntastic_python_checkers = ['flake8']
 " to ensure flake8 checks for python 2 code (calling only 'flake8' gives the
 " python 3 version):
 let g:syntastic_python_flake8_exe = 'python -m flake8'
 let g:syntastic_python_pydocstyle_args = "--match='.*'"
 let g:syntastic_c_checkers = []
 let g:syntastic_cpp_checkers = []
+let g:syntastic_rst_checkers = ['sphinx']
 
 
 """ ropevim
@@ -299,3 +309,11 @@ let g:ros_make = 'current'  " [current|all]
 let g:ros_build_system = 'catkin-tools'  " [catkin|rosbuild|catkin-tools]
 " Additional options for catkin_make (i.e '-j4 -DCMAKE_BUILD_TYPE=Debug' ...)
 "let g:ros_catkin_make_options = ''
+
+
+""" scratch.vim
+let g:scratch_persistent_file = '/home/fwidmaier/.vimscratch'
+
+
+""" Riv (reST plugin)
+let g:riv_disable_folding = 1
