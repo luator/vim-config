@@ -42,3 +42,6 @@ numpy
 PoseStamped
 uint16
 uint8
+preempted
+preempt
+LONA
