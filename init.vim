@@ -82,7 +82,7 @@ endif " has("autocmd")
 " Only define it when not defined already.
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-		  \ | wincmd p | diffthis
+              \ | wincmd p | diffthis
 endif
 
 
@@ -94,11 +94,12 @@ endif
 " General Settings
 """""""""""""""""""
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
 set linebreak
 set showbreak=…
 set expandtab
-set tw=79
+set tw=80
 
 " Visualize the line were tw will break (http://superuser.com/a/207548/226624)
 set colorcolumn=+0
@@ -121,6 +122,10 @@ set wildmenu
 " [buffernumber] [modified] filename [filetype]              line,col    pos
 set statusline=[%n]\ %m%<%.99f\ %h%w%r%y%=%-16(\ %l,%c%V\ %)%P
 
+
+" detect file changes (sometimes)  https://github.com/neovim/neovim/issues/1936
+set autoread
+au FocusGained * :checktime
 
 " This messes up ONI colorscheme so only set when not running ONI
 if !exists("g:gui_oni")
@@ -169,12 +174,13 @@ nmap <silent> <Up> gk
 "inoremap <C-Space> <C-x><C-o>
 "inoremap <C-@> <C-Space>
 
-" Press Ctrl+J to split line at cursor position
-" (http://stackoverflow.com/questions/3961730/how-to-break-a-line-in-vim-in-normal-mode)
-":nnoremap <NL> i<CR><ESC>
-
 map <F3> :cn<CR>
 map <F4> :lne<CR>
+
+" Use <M-]> to go back from tags jump <C-]>.  This is a bit more intuitive and
+" avoids collision with C-t in ONI.
+" NOTE: My preferred remapping would be <C-[> but this is equivalent to ESC!
+nnoremap <M-]> <C-t>
 
 " Use Ctrl Alt P to open CtrlPBuffer
 map <C-A-p> :CtrlPBuffer<CR>
@@ -241,6 +247,9 @@ Plugin 'rhysd/vim-clang-format'
 Plugin 'mtth/scratch.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-scripts/a.vim'
+Plugin 'machakann/vim-sandwich'
+Plugin 'google/vim-searchindex'
 Bundle 'Rykka/riv.vim'
 
 call vundle#end()
@@ -272,6 +281,11 @@ filetype plugin indent on
 "nmap <C-space> <Plug>IMAP_JumpForward
 
 
+""" NERD Commenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+
 """ NERD Tree
 
 " Open/Close NERD Tree with C-n
@@ -279,6 +293,10 @@ map <C-n> :NERDTreeToggle<CR>
 
 
 """ Syntastic
+
+" passive mode by default (i.e. do not automatically check when saving files).
+" This is to not have redundant checks with ALE
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -326,3 +344,24 @@ let g:riv_disable_folding = 1
 """ NeoVim specific
 " https://github.com/neovim/neovim/issues/5990
 let $VTE_VERSION="100"
+
+""" ALE (https://github.com/w0rp/ale)
+" Do not run linters on every text change
+let g:ale_lint_on_text_changed = 'never'
+
+
+""" Search: mark current match in different colour
+" https://vi.stackexchange.com/a/2770/3261
+
+" Damian Conway's Die Blinkënmatchen: highlight matches
+"nnoremap <silent> n n:call HLNext(0.1)<cr>
+"nnoremap <silent> N N:call HLNext(0.1)<cr>
+"function! HLNext (blinktime)
+"  let target_pat = '\c\%#'.@/
+"  let ring = matchadd('ErrorMsg', target_pat, 101)
+"  redraw
+"  " disable the blink part
+"  exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+"  call matchdelete(ring)
+"  redraw
+"endfunction
