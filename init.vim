@@ -106,7 +106,7 @@ set colorcolumn=+0
 
 " Visualize tabs and trailing spaces.
 set list
-set listchars=tab:\ \ ,trail:·
+set listchars=tab:⇥\ ,trail:·
 
 " allow unsaved buffers to be hidden.
 set hidden
@@ -168,6 +168,8 @@ imap <silent> <Down> <C-o>gj
 imap <silent> <Up> <C-o>gk
 nmap <silent> <Down> gj
 nmap <silent> <Up> gk
+nmap <silent> j gj
+nmap <silent> k gk
 
 " Remap omnicomplete to Ctrl+Space
 " (http://stackoverflow.com/a/12344382/2095383)
@@ -190,9 +192,11 @@ map <C-A-p> :CtrlPBuffer<CR>
 """"""""""""""""""""""""
 
 " insert current date
-:command Date r!date +"{\%F}"
+command Date r!date +"{\%F}"
 " close file in current buffer and show previous buffer instead
-:command Bc bp | bd#
+command Bc bp | bd#
+
+"cnoreabbrev # b#  " unfortunately causes 
 
 
 " file type mappings
@@ -235,6 +239,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-apathy'
 Plugin 'python-rope/ropevim'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'tell-k/vim-autopep8'
@@ -250,6 +255,10 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/a.vim'
 Plugin 'machakann/vim-sandwich'
 Plugin 'google/vim-searchindex'
+Plugin 'mileszs/ack.vim'
+Plugin 'vim-scripts/DoxygenToolkit.vim'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'zivyangll/git-blame.vim'
 Bundle 'Rykka/riv.vim'
 
 call vundle#end()
@@ -339,6 +348,10 @@ let g:scratch_persistent_file = '/home/fwidmaier/.vimscratch'
 
 """ Riv (reST plugin)
 let g:riv_disable_folding = 1
+
+""" Ack
+" use ag instead of ack
+let g:ackprg = 'ag --vimgrep'
 
 
 """ NeoVim specific
