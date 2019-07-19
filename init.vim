@@ -14,10 +14,6 @@ if v:progname =~? "evim"
   finish
 endif
 
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -93,13 +89,14 @@ endif
 
 " General Settings
 """""""""""""""""""
-set tabstop=4
+set tabstop=8
 set softtabstop=4
 set shiftwidth=4
+set expandtab
 set linebreak
 set showbreak=…
-set expandtab
-set tw=80
+set textwidth=80
+"set colorcolumn=80,120
 
 " Visualize the line were tw will break (http://superuser.com/a/207548/226624)
 set colorcolumn=+0
@@ -164,20 +161,20 @@ endif
 nnoremap Y y$
 
 " Normal movement in wrapped lines (http://vim.wikia.com/wiki/VimTip308)
-imap <silent> <Down> <C-o>gj
-imap <silent> <Up> <C-o>gk
-nmap <silent> <Down> gj
-nmap <silent> <Up> gk
-nmap <silent> j gj
-nmap <silent> k gk
+inoremap <silent> <Down> <C-o>gj
+inoremap <silent> <Up> <C-o>gk
+nnoremap <silent> <Down> gj
+nnoremap <silent> <Up> gk
+nnoremap <silent> j gj
+nnoremap <silent> k gk
 
 " Remap omnicomplete to Ctrl+Space
 " (http://stackoverflow.com/a/12344382/2095383)
 "inoremap <C-Space> <C-x><C-o>
 "inoremap <C-@> <C-Space>
 
-map <F3> :cn<CR>
-map <F4> :lne<CR>
+noremap <F3> :cn<CR>
+noremap <F4> :lne<CR>
 
 " Use <M-]> to go back from tags jump <C-]>.  This is a bit more intuitive and
 " avoids collision with C-t in ONI.
@@ -185,7 +182,7 @@ map <F4> :lne<CR>
 nnoremap <M-]> <C-t>
 
 " Use Ctrl Alt P to open CtrlPBuffer
-map <C-A-p> :CtrlPBuffer<CR>
+noremap <C-A-p> :CtrlPBuffer<CR>
 
 
 " User-defined Commands
@@ -240,6 +237,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-apathy'
+Plugin 'tpope/vim-fugitive'
 Plugin 'python-rope/ropevim'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'tell-k/vim-autopep8'
