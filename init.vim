@@ -124,13 +124,10 @@ set statusline=[%n]\ %m%<%.99f\ %h%w%r%y%=%-16(\ %l,%c%V\ %)%P
 set autoread
 au FocusGained * :checktime
 
-" This messes up ONI colorscheme so only set when not running ONI
-if !exists("g:gui_oni")
-    " set colorscheme
-    set background=dark
-    se t_Co=16 " Fix for solarized (http://stackoverflow.com/a/5561823/2095383)
-    colorscheme solarized
-endif
+" set colorscheme
+set background=dark
+"se t_Co=16 " Fix for solarized (http://stackoverflow.com/a/5561823/2095383)
+colorscheme solarized
 
 
 " Specific gVim settings
