@@ -225,7 +225,7 @@ set spelllang=en_gb
 
 filetype off
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -271,8 +271,6 @@ call vundle#end()
 " " see :h vundle for more details or wiki for FAQ
 " " Put your non-Plugin stuff after this line
 
-
-"execute pathogen#infect()
 
 " Enable file type detection.
 " Use the default filetype settings, so that mail gets 'tw' set to 72,
