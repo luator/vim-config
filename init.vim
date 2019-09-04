@@ -262,6 +262,8 @@ Plugin 'mileszs/ack.vim'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'zivyangll/git-blame.vim'
+Plugin 'dense-analysis/ale'
+Plugin 'vimwiki/vimwiki'
 Bundle 'Rykka/riv.vim'
 
 call vundle#end()
@@ -353,6 +355,15 @@ let g:riv_disable_folding = 1
 """ Ack
 " use ag instead of ack
 let g:ackprg = 'ag --vimgrep'
+
+
+""" vimwiki
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
+
+" This will make sure vimwiki will only set the filetype of markdown files
+" inside a wiki directory, rather than globally.
+let g:vimwiki_global_ext = 0
 
 
 """ NeoVim specific
