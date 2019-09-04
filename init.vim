@@ -190,7 +190,11 @@ nnoremap Q @q
 """"""""""""""""""""""""
 
 " insert current date
-command Date r!date +"{\%F}"
+"command Date put =strftime('%F')
+" This is a bit complicated but inserts date after cursor position without
+" adding new line.
+command Date execute "normal a<C-R>=strftime('%F')<CR><ESC>"
+
 " close file in current buffer and show previous buffer instead
 command Bc bp | bd#
 
