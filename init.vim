@@ -195,10 +195,13 @@ nnoremap Q @q
 " adding new line.
 command Date execute "normal a<C-R>=strftime('%F')<CR><ESC>"
 
+" Remove trailing spaces
+command Detrail %s/ \+$//
+
 " close file in current buffer and show previous buffer instead
 command Bc bp | bd#
 
-"cnoreabbrev # b#  " unfortunately causes 
+"cnoreabbrev # b#  " unfortunately causes
 
 
 " file type mappings
