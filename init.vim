@@ -339,6 +339,7 @@ let ropevim_enable_autoimport = 0
 """ CtrlP
 
 let g:ctrlp_custom_ignore = '\v(\.pyc|\~|build)$'  " ignore *.pyc files
+let g:ctrlp_working_path_mode = 'wra'
 
 
 """ vim-ros
