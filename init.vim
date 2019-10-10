@@ -246,7 +246,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-apathy'
 Plugin 'tpope/vim-fugitive'
-Plugin 'python-rope/ropevim'
+"Plugin 'python-rope/ropevim'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'vim-syntastic/syntastic'
@@ -267,6 +267,9 @@ Plugin 'jlanzarotta/bufexplorer'
 Plugin 'zivyangll/git-blame.vim'
 Plugin 'dense-analysis/ale'
 Plugin 'vimwiki/vimwiki'
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'singularityware/singularity.lang', {'rtp': 'vim/'}
 Bundle 'Rykka/riv.vim'
 
 call vundle#end()
@@ -368,6 +371,27 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
 " This will make sure vimwiki will only set the filetype of markdown files
 " inside a wiki directory, rather than globally.
 let g:vimwiki_global_ext = 0
+
+
+""" vim-lsp
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
+if executable('clangd-8')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd-8', '-background-index']},
+        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+        \ })
+endif
+
+set omnifunc=lsp#complete
+let g:lsp_diagnostics_enabled = 0
 
 
 """ NeoVim specific
