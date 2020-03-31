@@ -318,11 +318,9 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
-"let g:syntastic_python_checkers = ['flake8', 'pydocstyle']
 let g:syntastic_python_checkers = ['flake8']
-" to ensure flake8 checks for python 2 code (calling only 'flake8' gives the
-" python 3 version):
-let g:syntastic_python_flake8_exe = 'python -m flake8'
+" to ensure flake8 checks for python 3 code:
+let g:syntastic_python_flake8_exe = 'python3 -m flake8'
 let g:syntastic_python_pydocstyle_args = "--match='.*'"
 let g:syntastic_c_checkers = []
 let g:syntastic_cpp_checkers = []
@@ -397,6 +395,8 @@ let $VTE_VERSION="100"
 """ ALE (https://github.com/w0rp/ale)
 " Do not run linters on every text change
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_python_flake8_executable = 'python3'
+let g:ale_python_flake8_options = '-m flake8'
 
 
 """ Search: mark current match in different colour
