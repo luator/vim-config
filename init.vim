@@ -404,6 +404,11 @@ let g:ale_python_flake8_options = '-m flake8'
 let g:ale_python_mypy_options = '--ignore-missing-imports'
 
 
+""" airline
+" remove 'spell' from section a
+let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'keymap', 'capslock', 'xkblayout', 'iminsert'])
+
+
 """ Search: mark current match in different colour
 " https://vi.stackexchange.com/a/2770/3261
 
