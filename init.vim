@@ -269,6 +269,7 @@ Plugin 'vimwiki/vimwiki'
 "Plugin 'prabirshrestha/async.vim'
 "Plugin 'prabirshrestha/vim-lsp'
 Plugin 'singularityware/singularity.lang', {'rtp': 'vim/'}
+Plugin 'octol/vim-cpp-enhanced-highlight'
 Bundle 'Rykka/riv.vim'
 
 call vundle#end()
