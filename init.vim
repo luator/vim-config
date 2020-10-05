@@ -270,6 +270,7 @@ Plugin 'vimwiki/vimwiki'
 "Plugin 'prabirshrestha/vim-lsp'
 Plugin 'singularityware/singularity.lang', {'rtp': 'vim/'}
 Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'neovim/nvim-lspconfig'
 Bundle 'Rykka/riv.vim'
 
 call vundle#end()
@@ -372,29 +373,58 @@ let g:vimwiki_global_ext = 0
 
 
 """ vim-lsp
-if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
-if executable('clangd-8')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'clangd',
-        \ 'cmd': {server_info->['clangd-8', '-background-index']},
-        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-        \ })
-endif
-
-set omnifunc=lsp#complete
-let g:lsp_diagnostics_enabled = 0
+"if executable('pyls')
+"    " pip install python-language-server
+"    au User lsp_setup call lsp#register_server({
+"        \ 'name': 'pyls',
+"        \ 'cmd': {server_info->['pyls']},
+"        \ 'whitelist': ['python'],
+"        \ })
+"endif
+"if executable('clangd-8')
+"    au User lsp_setup call lsp#register_server({
+"        \ 'name': 'clangd',
+"        \ 'cmd': {server_info->['clangd-8', '-background-index']},
+"        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+"        \ })
+"endif
+"
+"set omnifunc=lsp#complete
+"let g:lsp_diagnostics_enabled = 0
 
 
 """ NeoVim specific
 " https://github.com/neovim/neovim/issues/5990
 let $VTE_VERSION="100"
+
+" nvim_lsp  (see :help lsp)
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+
+lua <<EOF
+if vim.lsp then
+    require'nvim_lsp'.pyls_ms.setup{
+        init_options = {
+          interpreter = {
+            properties = {
+              InterpreterPath = "/usr/bin/python3",
+              Version = "3.6"
+            }
+          }
+        }
+    }
+end
+EOF
+
+" Use LSP omni-completion in Python files.
+autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
 """ ALE (https://github.com/w0rp/ale)
 " Do not run linters on every text change
