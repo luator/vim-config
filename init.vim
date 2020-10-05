@@ -401,6 +401,7 @@ let $VTE_VERSION="100"
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_python_flake8_executable = 'python3'
 let g:ale_python_flake8_options = '-m flake8'
+let g:ale_python_mypy_options = '--ignore-missing-imports'
 
 
 """ Search: mark current match in different colour
