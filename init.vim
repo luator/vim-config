@@ -386,7 +386,7 @@ let g:vimwiki_global_ext = 0
 let $VTE_VERSION="100"
 
 " nvim_lsp  (see :help lsp)
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+"nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
@@ -399,6 +399,7 @@ nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 lua <<EOF
 if vim.lsp then
     require'nvim_lsp'.pyls_ms.setup{
+        on_attach=require'diagnostic'.on_attach,
         init_options = {
           interpreter = {
             properties = {
@@ -410,6 +411,17 @@ if vim.lsp then
     }
 end
 EOF
+
+let g:diagnostic_enable_virtual_text = 0
+let g:space_before_virtual_text = 3
+let g:diagnostic_insert_delay = 1
+
+" see https://github.com/nvim-lua/diagnostic-nvim/issues/29
+"autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+"set updatetime=500
+
+command Diag lua vim.lsp.util.show_line_diagnostics()<CR>
+nnoremap <M-d> :lua vim.lsp.util.show_line_diagnostics()<CR>
 
 " Use LSP omni-completion in Python files.
 autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
