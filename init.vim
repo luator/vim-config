@@ -399,7 +399,6 @@ nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 lua <<EOF
 if vim.lsp then
     require'nvim_lsp'.pyls_ms.setup{
-        on_attach=require'diagnostic'.on_attach,
         init_options = {
           interpreter = {
             properties = {
@@ -410,18 +409,33 @@ if vim.lsp then
         }
     }
 end
+
+-- Settings for displaying LSP diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    -- This will disable virtual text, like doing:
+    -- let g:diagnostic_enable_virtual_text = 0
+    virtual_text = false,
+
+    -- This is similar to:
+    -- let g:diagnostic_show_sign = 1
+    -- To configure sign display,
+    --  see: ":help vim.lsp.diagnostic.set_signs()"
+    signs = true,
+
+    -- This is similar to:
+    -- "let g:diagnostic_insert_delay = 1"
+    update_in_insert = false,
+  }
+)
+
 EOF
 
-let g:diagnostic_enable_virtual_text = 0
-let g:space_before_virtual_text = 3
-let g:diagnostic_insert_delay = 1
+" Mappings for diagnostics commands
+nnoremap <M-d> :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
+nnoremap <leader>dn <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <leader>dp <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 
-" see https://github.com/nvim-lua/diagnostic-nvim/issues/29
-"autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
-"set updatetime=500
-
-command Diag lua vim.lsp.util.show_line_diagnostics()<CR>
-nnoremap <M-d> :lua vim.lsp.util.show_line_diagnostics()<CR>
 
 " Use LSP omni-completion in Python files.
 autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
