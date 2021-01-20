@@ -235,7 +235,6 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-apathy'
 Plugin 'tpope/vim-fugitive'
-"Plugin 'python-rope/ropevim'
 Plugin 'hynek/vim-python-pep8-indent'
 "Plugin 'vim-syntastic/syntastic'
 Plugin 'vhdirk/vim-cmake'
@@ -254,8 +253,6 @@ Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'dense-analysis/ale'
 Plugin 'vimwiki/vimwiki'
-"Plugin 'prabirshrestha/async.vim'
-"Plugin 'prabirshrestha/vim-lsp'
 Plugin 'singularityware/singularity.lang', {'rtp': 'vim/'}
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'neovim/nvim-lspconfig'
@@ -293,12 +290,6 @@ filetype plugin indent on
 let g:NERDSpaceDelims = 1
 
 
-""" NERD Tree
-
-" Open/Close NERD Tree with C-n
-map <C-n> :NERDTreeToggle<CR>
-
-
 """ Syntastic
 
 " passive mode by default (i.e. do not automatically check when saving files).
@@ -320,12 +311,6 @@ let g:syntastic_cpp_checkers = []
 let g:syntastic_rst_checkers = ['sphinx']
 
 
-""" ropevim
-
-"let ropevim_vim_completion = 1
-let ropevim_enable_autoimport = 0
-
-
 """ CtrlP
 
 let g:ctrlp_custom_ignore = '\v(\.pyc|\~|build)$'  " ignore *.pyc files
@@ -333,14 +318,10 @@ let g:ctrlp_working_path_mode = 'wra'
 
 
 """ vim-ros
-let g:ros_make = 'current'  " [current|all]
-let g:ros_build_system = 'catkin-tools'  " [catkin|rosbuild|catkin-tools]
+"let g:ros_make = 'current'  " [current|all]
+"let g:ros_build_system = 'catkin-tools'  " [catkin|rosbuild|catkin-tools]
 " Additional options for catkin_make (i.e '-j4 -DCMAKE_BUILD_TYPE=Debug' ...)
 "let g:ros_catkin_make_options = ''
-
-
-""" scratch.vim
-let g:scratch_persistent_file = '/home/fwidmaier/.vimscratch'
 
 
 """ Riv (reST plugin)
@@ -360,89 +341,20 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
 let g:vimwiki_global_ext = 0
 
 
-""" vim-lsp
-"if executable('pyls')
-"    " pip install python-language-server
-"    au User lsp_setup call lsp#register_server({
-"        \ 'name': 'pyls',
-"        \ 'cmd': {server_info->['pyls']},
-"        \ 'whitelist': ['python'],
-"        \ })
-"endif
-"if executable('clangd-8')
-"    au User lsp_setup call lsp#register_server({
-"        \ 'name': 'clangd',
-"        \ 'cmd': {server_info->['clangd-8', '-background-index']},
-"        \ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-"        \ })
-"endif
-"
-"set omnifunc=lsp#complete
-"let g:lsp_diagnostics_enabled = 0
-
-
 """ NeoVim specific
 " https://github.com/neovim/neovim/issues/5990
 let $VTE_VERSION="100"
 
-" nvim_lsp  (see :help lsp)
-"nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+" lspconfig  (see :help lsp)
+:lua require('lsp_config')
 
-lua <<EOF
-if vim.lsp then
-    require'nvim_lsp'.pyls_ms.setup{
-        init_options = {
-          interpreter = {
-            properties = {
-              InterpreterPath = "/usr/bin/python3",
-              Version = "3.6"
-            }
-          }
-        }
-    }
-end
-
--- Settings for displaying LSP diagnostics
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    -- This will disable virtual text, like doing:
-    -- let g:diagnostic_enable_virtual_text = 0
-    virtual_text = false,
-
-    -- This is similar to:
-    -- let g:diagnostic_show_sign = 1
-    -- To configure sign display,
-    --  see: ":help vim.lsp.diagnostic.set_signs()"
-    signs = true,
-
-    -- This is similar to:
-    -- "let g:diagnostic_insert_delay = 1"
-    update_in_insert = false,
-  }
-)
-
-EOF
-
-" Mappings for diagnostics commands
-nnoremap <M-d> :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
-nnoremap <leader>dn <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <leader>dp <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-
-
-" Use LSP omni-completion in Python files.
-autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
 """ ALE (https://github.com/w0rp/ale)
+" LSPs are handled by neovim itself
+let g:ale_disable_lsp = 1
 " Do not run linters on every text change
 let g:ale_lint_on_text_changed = 'never'
+
 let g:ale_python_flake8_executable = 'python3'
 let g:ale_python_flake8_options = '-m flake8'
 let g:ale_python_mypy_options = '--ignore-missing-imports'
