@@ -221,62 +221,46 @@ set spelllang=en_gb
 " Plugins
 """"""""""
 
-filetype off
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin(stdpath('data') . '/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-apathy'
+Plug 'tpope/vim-fugitive'
+Plug 'hynek/vim-python-pep8-indent'
+"Plug 'vim-syntastic/syntastic'
+Plug 'vhdirk/vim-cmake'
+"Plug 'taketwo/vim-ros'
+"Plug 'vim-voom/VOoM'
+Plug 'vim-latex/vim-latex'
+Plug 'rhysd/vim-clang-format'
+Plug 'psf/black', { 'on': 'Black' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/a.vim'
+Plug 'machakann/vim-sandwich'
+Plug 'google/vim-searchindex'
+Plug 'mileszs/ack.vim'
+Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'dense-analysis/ale'
+Plug 'vimwiki/vimwiki'
+Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'neovim/nvim-lspconfig'
+Plug 'Rykka/riv.vim'
 
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-apathy'
-Plugin 'tpope/vim-fugitive'
-Plugin 'hynek/vim-python-pep8-indent'
-"Plugin 'vim-syntastic/syntastic'
-Plugin 'vhdirk/vim-cmake'
-"Plugin 'taketwo/vim-ros'
-"Plugin 'vim-voom/VOoM'
-Plugin 'vim-latex/vim-latex'
-Plugin 'rhysd/vim-clang-format'
-Plugin 'psf/black'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/a.vim'
-Plugin 'machakann/vim-sandwich'
-Plugin 'google/vim-searchindex'
-Plugin 'mileszs/ack.vim'
-Plugin 'vim-scripts/DoxygenToolkit.vim'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'dense-analysis/ale'
-Plugin 'vimwiki/vimwiki'
-Plugin 'singularityware/singularity.lang', {'rtp': 'vim/'}
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'neovim/nvim-lspconfig'
-Bundle 'Rykka/riv.vim'
-
-call vundle#end()
-" Brief Vundle help
-" " :PluginList       - lists configured plugins
-" " :PluginInstall    - installs plugins; append `!` to update or just
-" :PluginUpdate
-" " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" " :PluginClean      - confirms removal of unused plugins; append `!` to
-" auto-approve removal
-" "
-" " see :h vundle for more details or wiki for FAQ
-" " Put your non-Plugin stuff after this line
-
-
-" Enable file type detection.
-" Use the default filetype settings, so that mail gets 'tw' set to 72,
-" 'cindent' is on in C files, etc.  Also load indent files, to automatically
-" do language-dependent indenting.
-" This has to come *after* pathogen#infect/vundle
-filetype plugin indent on
+call plug#end()
+" vim-plug commands:
+" PlugInstall [name ...] [#threads] Install plugins
+" PlugUpdate [name ...] [#threads]  Install or update plugins
+" PlugClean[!]  Remove unlisted plugins (bang version will clean without prompt)
+" PlugUpgrade   Upgrade vim-plug itself
+" PlugStatus    Check the status of plugins
+" PlugDiff  Examine changes from the previous update and the pending changes
+" PlugSnapshot[!] [output path] Generate script for restoring the current snapshot of the plugins
 
 
 """ Latex
