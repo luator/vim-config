@@ -194,10 +194,6 @@ set spell
 set spelllang=en_gb
 
 
-" Integrate clang-format
-" http://clang.llvm.org/docs/ClangFormat.html#vim-integration
-" Disabled in favor of clang-format plugin (see below)
-" :command ClangFormat :pyf /usr/share/vim/addons/syntax/clang-format.py
 
 
 " Plugins
