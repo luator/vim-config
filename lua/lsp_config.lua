@@ -35,7 +35,7 @@ local on_attach = function(client, bufnr)
     require('lspconfig').util.nvim_multiline_command [[
       :hi LspReferenceRead ctermbg=LightYellow ctermfg=black
       :hi LspReferenceText ctermbg=LightYellow ctermfg=black
-      :hi LspReferenceWrite ctermbg=LightRed ctermfg=black
+      :hi LspReferenceWrite ctermbg=LightYellow ctermfg=black
       augroup lsp_document_highlight
         autocmd!
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
