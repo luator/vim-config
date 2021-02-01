@@ -194,6 +194,11 @@ set spell
 set spelllang=en_gb
 
 
+" Neovim-specific configuration
+"""""""""""""""""""""""""""""""
+
+" Highlight yanked text for a brief moment
+au TextYankPost * silent! lua vim.highlight.on_yank()
 
 
 " Plugins
