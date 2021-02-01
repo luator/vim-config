@@ -118,26 +118,6 @@ set background=dark
 colorscheme solarized
 
 
-" Specific gVim settings
-"""""""""""""""""""""""""
-
-if has('gui_running')
-  " always show tab bar (workaround for the status-line disappears on maximized
-  " window bug, https://unix.stackexchange.com/a/31317/108576).
-  set showtabline=2
-
-  " Set font for gvim
-  set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
-
-  set grepprg=grep\ -nH\ $*
-
-  colorscheme solarized
-  set background=light
-
-  set number  " show line numbers
-endif
-
-
 
 " Key Bindings
 """""""""""""""
