@@ -49,6 +49,7 @@ end
 if vim.lsp then
     lspconfig.pyls_ms.setup{
         on_attach = on_attach,
+        cmd = { "dotnet", "exec", "/home/felix/src/python-language-server/output/bin/Debug/Microsoft.Python.LanguageServer.dll" },
         init_options = {
             interpreter = {
                 properties = {
