@@ -117,6 +117,8 @@ set background=dark
 "se t_Co=16 " Fix for solarized (http://stackoverflow.com/a/5561823/2095383)
 colorscheme solarized
 
+" set the timeout for CursorHold (the default is pretty long)
+set updatetime=1000
 
 
 " Key Bindings
