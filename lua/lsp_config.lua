@@ -1,3 +1,5 @@
+--vim.lsp.set_log_level("debug")
+
 local lspconfig = require('lspconfig')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -47,9 +49,10 @@ end
 
 
 if vim.lsp then
+    ms_pyls_path = os.getenv("HOME") .. "/src/python-language-server/output/bin/Debug/Microsoft.Python.LanguageServer.dll"
     lspconfig.pyls_ms.setup{
         on_attach = on_attach,
-        cmd = { "dotnet", "exec", "/home/felix/src/python-language-server/output/bin/Debug/Microsoft.Python.LanguageServer.dll" },
+        cmd = { "dotnet", "exec", ms_pyls_path },
         init_options = {
             interpreter = {
                 properties = {
