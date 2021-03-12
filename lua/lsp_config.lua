@@ -50,16 +50,11 @@ end
 
 
 if vim.lsp then
-    ms_pyls_path = os.getenv("HOME") .. "/src/python-language-server/output/bin/Debug/Microsoft.Python.LanguageServer.dll"
-    lspconfig.pyls_ms.setup{
+    lspconfig.pyls.setup{
         on_attach = on_attach,
-        cmd = { "dotnet", "exec", ms_pyls_path },
-        init_options = {
-            interpreter = {
-                properties = {
-                    InterpreterPath = "/usr/bin/python3",
-                    Version = "3.6"
-                }
+        settings = {
+            pyls = {
+                configurationSources = { "flake8" }
             }
         }
     }

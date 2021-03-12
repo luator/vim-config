@@ -4,6 +4,12 @@
 To use this configuration with neovim
 
 1. clone the repo to `~/.config/nvim`
-2. run `git submodule update --init` to get Vundle
-3. run nvim and execute `:PluginInstall` to get all the plugins
-   or simply run `nvim +PluginInstall +qall`
+3. run nvim and execute `:PlugInstall` to get all the plugins
+   or simply run `nvim +PlugInstall +qall`
+
+
+## Install Python Language Server
+
+    pip install python-language-server
+    pip install pyls-mypy
+    pip install pyls-black
