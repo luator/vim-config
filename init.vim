@@ -228,7 +228,7 @@ Plug 'google/vim-searchindex'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'dense-analysis/ale'
+"Plug 'dense-analysis/ale'
 Plug 'vimwiki/vimwiki'
 Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
 Plug 'octol/vim-cpp-enhanced-highlight'
