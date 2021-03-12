@@ -54,7 +54,16 @@ if vim.lsp then
         on_attach = on_attach,
         settings = {
             pyls = {
-                configurationSources = { "flake8" }
+                configurationSources = { "flake8" },
+                plugins = {
+                    -- disable formatters to ensure they don't mess with black
+                    autopep8 = {
+                        enabled = false
+                    },
+                    yapf = {
+                        enabled = false
+                    },
+                }
             }
         }
     }
