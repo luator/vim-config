@@ -6,6 +6,8 @@ local on_attach = function(client, bufnr)
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- automatically close preview window after auto-complete
+  vim.api.nvim_command('autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif')
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
