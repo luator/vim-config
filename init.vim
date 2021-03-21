@@ -232,6 +232,7 @@ Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'neovim/nvim-lspconfig'
 Plug 'Rykka/riv.vim'
+Plug 'editorconfig/editorconfig-vim'
 
 call plug#end()
 " vim-plug commands:
@@ -304,6 +305,10 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
 " This will make sure vimwiki will only set the filetype of markdown files
 " inside a wiki directory, rather than globally.
 let g:vimwiki_global_ext = 0
+
+
+""" editorconfig
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 
 """ NeoVim specific
