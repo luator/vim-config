@@ -149,7 +149,8 @@ noremap <F4> :lne<CR>
 nnoremap <M-]> <C-t>
 
 " Use Ctrl Alt P to open CtrlPBuffer
-noremap <C-A-p> :CtrlPBuffer<CR>
+"noremap <C-A-p> :CtrlPBuffer<CR>
+noremap <A-p> :CtrlPBuffer<CR>
 
 " Kill ex mode. Instead use Q to execute macro 'q'
 " Inspired by https://news.ycombinator.com/item?id=8340181
