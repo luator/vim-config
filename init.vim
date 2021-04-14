@@ -112,11 +112,6 @@ set statusline=[%n]\ %m%<%.99f\ %h%w%r%y%=%-16(\ %l,%c%V\ %)%P
 set autoread
 au FocusGained * :checktime
 
-" set colorscheme
-set background=dark
-"se t_Co=16 " Fix for solarized (http://stackoverflow.com/a/5561823/2095383)
-colorscheme solarized
-
 " set the timeout for CursorHold (the default is pretty long)
 set updatetime=1000
 
@@ -231,6 +226,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'neovim/nvim-lspconfig'
 Plug 'Rykka/riv.vim'
 Plug 'nvim-lua/completion-nvim'
+Plug 'lifepillar/vim-solarized8'
 
 call plug#end()
 " vim-plug commands:
@@ -242,6 +238,11 @@ call plug#end()
 " PlugDiff  Examine changes from the previous update and the pending changes
 " PlugSnapshot[!] [output path] Generate script for restoring the current snapshot of the plugins
 
+
+" set colorscheme
+set background=dark
+set termguicolors
+colorscheme solarized8
 
 """ Latex
 
