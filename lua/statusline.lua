@@ -83,7 +83,9 @@ gls.left[2] = {
 }
 gls.left[4] = {
   FileName = {
-    provider = 'FileName',
+    --provider = 'FileName',
+    -- The FileName provider strips the path, which I want to keep
+    provider = function() return vim.fn.expand("%") .. " " end,
     --condition = buffer_not_empty,
     highlight = { colors.fg, colors.section_bg },
     separator = " ",
