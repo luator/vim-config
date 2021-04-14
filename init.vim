@@ -103,11 +103,6 @@ set hidden
 set wildmode=longest,list,full
 set wildmenu
 
-" Customize status line
-" [buffernumber] [modified] filename [filetype]              line,col    pos
-set statusline=[%n]\ %m%<%.99f\ %h%w%r%y%=%-16(\ %l,%c%V\ %)%P
-
-
 " detect file changes (sometimes)  https://github.com/neovim/neovim/issues/1936
 set autoread
 au FocusGained * :checktime
@@ -212,8 +207,8 @@ Plug 'vhdirk/vim-cmake'
 Plug 'vim-latex/vim-latex'
 Plug 'rhysd/vim-clang-format'
 "Plug 'psf/black', { 'on': 'Black' }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/a.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'google/vim-searchindex'
@@ -227,6 +222,11 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'Rykka/riv.vim'
 Plug 'nvim-lua/completion-nvim'
 Plug 'lifepillar/vim-solarized8'
+
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'lewis6991/gitsigns.nvim'
 
 call plug#end()
 " vim-plug commands:
@@ -322,7 +322,14 @@ let $VTE_VERSION="100"
 
 """ airline
 " remove 'spell' from section a
-let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'keymap', 'capslock', 'xkblayout', 'iminsert'])
+"let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'keymap', 'capslock', 'xkblayout', 'iminsert'])
+
+
+:lua require('gitsigns').setup()
+
+:lua require('statusline')
+":lua require('eviline')
+":lua require('spaceline')
 
 
 """ Search: mark current match in different colour
