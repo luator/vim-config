@@ -230,6 +230,7 @@ Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'neovim/nvim-lspconfig'
 Plug 'Rykka/riv.vim'
+Plug 'nvim-lua/completion-nvim'
 
 call plug#end()
 " vim-plug commands:
@@ -338,3 +339,19 @@ let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste',
 "  call matchdelete(ring)
 "  redraw
 "endfunction
+
+
+""" completion-nvim
+
+" Use completion-nvim in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
