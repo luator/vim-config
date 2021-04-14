@@ -225,7 +225,6 @@ Plug 'google/vim-searchindex'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'jlanzarotta/bufexplorer'
-"Plug 'dense-analysis/ale'
 Plug 'vimwiki/vimwiki'
 Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
 Plug 'octol/vim-cpp-enhanced-highlight'
@@ -317,16 +316,6 @@ let $VTE_VERSION="100"
 " lspconfig  (see :help lsp)
 :lua require('lsp_config')
 
-
-""" ALE (https://github.com/w0rp/ale)
-" LSPs are handled by neovim itself
-let g:ale_disable_lsp = 1
-" Do not run linters on every text change
-let g:ale_lint_on_text_changed = 'never'
-
-let g:ale_python_flake8_executable = 'python3'
-let g:ale_python_flake8_options = '-m flake8'
-let g:ale_python_mypy_options = '--ignore-missing-imports'
 
 
 """ airline
