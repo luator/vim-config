@@ -70,7 +70,7 @@ local mode_color = function()
     i = colors.green,
     c = colors.orange,
     V = colors.magenta,
-    [''] = colors.magenta,
+    [''] = colors.magenta,
     v = colors.magenta,
     R = colors.red,
   }
@@ -87,7 +87,7 @@ gls.left[1] = {
         i = 'INSERT',
         c = 'COMMAND',
         V = 'VISUAL',
-        [''] = 'VISUAL',
+        [''] = 'VISUAL',
         v = 'VISUAL',
         R = 'REPLACE',
       }
