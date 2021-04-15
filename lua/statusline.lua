@@ -124,7 +124,7 @@ gls.left[3] = {
     condition = function()
         return condition.buffer_not_empty() and condition.hide_in_width()
     end,
-    icon = ' ',
+    icon = ' ',
     separator = ' ',
     highlight = {colors.fg,colors.section_bg},
     separator_highlight = {colors.fg,colors.section_bg},
