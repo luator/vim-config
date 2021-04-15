@@ -100,17 +100,7 @@ gls.left[1] = {
     separator_highlight = {colors.bg, colors.section_bg},
   },
 }
-gls.left[2] = {
-  FileName = {
-    --provider = 'FileName',
-    -- The FileName provider strips the path, which I want to keep
-    --provider = function() return vim.fn.expand("%") .. " " end,
-    provider = get_current_file_name,
-    highlight = { colors.fg, colors.section_bg },
-    separator = " ",
-    separator_highlight = {colors.section_bg, colors.bg},
-  }
-}
+
 --gls.left[3] = {
 --  GitBranch = {
 --    provider = function()
@@ -134,68 +124,81 @@ gls.left[3] = {
     condition = condition.buffer_not_empty,
     icon = ' ',
     separator = ' ',
-    highlight = {colors.fg,colors.bg},
-    separator_highlight = {colors.fg,colors.bg},
+    highlight = {colors.fg,colors.section_bg},
+    separator_highlight = {colors.fg,colors.section_bg},
   }
 }
-gls.left[7] = {
+gls.left[4] = {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = condition.hide_in_width,
     icon = '',
-    highlight = { colors.green, colors.bg },
+    highlight = { colors.green, colors.section_bg },
   }
 }
-gls.left[8] = {
+gls.left[5] = {
   DiffModified = {
     provider = 'DiffModified',
     condition = condition.hide_in_width,
     icon = '',
-    highlight = { colors.orange, colors.bg },
+    highlight = { colors.orange, colors.section_bg },
   }
 }
-gls.left[9] = {
+gls.left[6] = {
   DiffRemove = {
     provider = 'DiffRemove',
     condition = condition.hide_in_width,
     icon = '',
-    highlight = { colors.red,colors.bg },
+    highlight = { colors.red,colors.section_bg },
   }
 }
-gls.left[10] = {
+gls.left[7] = {
   GitLeftEnd = {
     provider = function() return ' ' end,
     condition = check_git_workspace,
-    highlight = {colors.section_bg,colors.bg}
+    highlight = {colors.bg,colors.section_bg}
   }
 }
+gls.left[10] = {
+  Space = {
+    provider = function() return " " end,
+    highlight = {colors.fg,colors.bg}
+  }
+}
+
 gls.left[11] = {
+  FileName = {
+    provider = get_current_file_name,
+    highlight = { colors.fg, colors.bg },
+    separator_highlight = { colors.fg, colors.bg },
+  }
+}
+
+gls.left[12] = {
   DiagnosticError = {
     provider = 'DiagnosticError',
     icon = '  ',
-    highlight = {colors.red,colors.section_bg}
-  }
-}
-gls.left[12] = {
-  Space = {
-    provider = function () return ' ' end,
-    highlight = {colors.section_bg,colors.section_bg},
+    highlight = {colors.red,colors.bg}
   }
 }
 gls.left[13] = {
+  Space = {
+    provider = function () return ' ' end,
+    highlight = {colors.section_bg,colors.bg},
+  }
+}
+gls.left[14] = {
   DiagnosticWarn = {
     provider = 'DiagnosticWarn',
     icon = '  ',
-    highlight = {colors.orange,colors.section_bg},
+    highlight = {colors.orange,colors.bg},
   }
 }
 gls.left[15] = {
   DiagnosticInfo = {
     provider = 'DiagnosticInfo',
     icon = '  ',
-    highlight = {colors.blue,colors.section_bg},
-    separator = ' ',
-    separator_highlight = { colors.section_bg, colors.bg },
+    highlight = {colors.blue,colors.bg},
   }
 }
 
