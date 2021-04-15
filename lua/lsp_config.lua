@@ -65,6 +65,13 @@ if vim.lsp then
                     yapf = {
                         enabled = false
                     },
+
+                    pyls_mypy = {
+                        enabled = true,
+                        -- disable live_mode as it is not aware of the file path
+                        -- and thus causes false alerts on relative imports
+                        live_mode = false,
+                    },
                 }
             }
         }
