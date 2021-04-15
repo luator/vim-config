@@ -2,16 +2,7 @@
 -- Copyright (c) 2018 Ricardo Madriz / MIT License
 
 local gl = require('galaxyline')
-
-function is_buffer_empty()
-  -- Check whether the current buffer is empty
-  return vim.fn.empty(vim.fn.expand('%:t')) == 1
-end
-
-function has_width_gt(cols)
-  -- Check if the windows width is greater than a given number of columns
-  return vim.fn.winwidth(0) / 2 > cols
-end
+local condition = require('galaxyline.condition')
 
 -- copied from galaxyline.provider_fileinfo, modified to include file path
 local function file_readonly(readonly_icon)
@@ -73,15 +64,6 @@ local colors = {
   red = '#dc322f'
 }
 
--- Local helper functions
-local buffer_not_empty = function()
-  return not is_buffer_empty()
-end
-
-local checkwidth = function()
-  return has_width_gt(40) and buffer_not_empty()
-end
-
 local mode_color = function()
   local mode_colors = {
     n = colors.cyan,
@@ -124,7 +106,6 @@ gls.left[2] = {
     -- The FileName provider strips the path, which I want to keep
     --provider = function() return vim.fn.expand("%") .. " " end,
     provider = get_current_file_name,
-    --condition = buffer_not_empty,
     highlight = { colors.fg, colors.section_bg },
     separator = " ",
     separator_highlight = {colors.section_bg, colors.bg},
@@ -150,7 +131,7 @@ gls.left[2] = {
 gls.left[3] = {
   GitBranch = {
     provider = 'GitBranch',
-    condition = buffer_not_empty,
+    condition = condition.buffer_not_empty,
     icon = ' ',
     separator = ' ',
     highlight = {colors.fg,colors.bg},
@@ -160,7 +141,7 @@ gls.left[3] = {
 gls.left[7] = {
   DiffAdd = {
     provider = 'DiffAdd',
-    condition = checkwidth,
+    condition = condition.hide_in_width,
     icon = '',
     highlight = { colors.green, colors.bg },
   }
@@ -168,7 +149,7 @@ gls.left[7] = {
 gls.left[8] = {
   DiffModified = {
     provider = 'DiffModified',
-    condition = checkwidth,
+    condition = condition.hide_in_width,
     icon = '',
     highlight = { colors.orange, colors.bg },
   }
@@ -176,7 +157,7 @@ gls.left[8] = {
 gls.left[9] = {
   DiffRemove = {
     provider = 'DiffRemove',
-    condition = checkwidth,
+    condition = condition.hide_in_width,
     icon = '',
     highlight = { colors.red,colors.bg },
   }
