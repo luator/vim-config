@@ -13,6 +13,32 @@ function has_width_gt(cols)
   return vim.fn.winwidth(0) / 2 > cols
 end
 
+-- copied from galaxyline.provider_fileinfo, modified to include file path
+local function file_readonly(readonly_icon)
+  if vim.bo.filetype == 'help' then
+    return ''
+  end
+  local icon = readonly_icon or ''
+  if vim.bo.readonly == true then
+    return " " .. icon .. " "
+  end
+  return ''
+end
+function get_current_file_name(modified_icon, readonly_icon)
+  local file = vim.fn.expand('%')
+  if vim.fn.empty(file) == 1 then return '' end
+  if string.len(file_readonly(readonly_icon)) ~= 0 then
+    return file .. file_readonly(readonly_icon)
+  end
+  local icon = modified_icon or ''
+  if vim.bo.modifiable then
+    if vim.bo.modified then
+      return file .. ' ' .. icon .. '  '
+    end
+  end
+  return file .. ' '
+end
+
 
 local gls = gl.section
 gl.short_line_list = { 'defx', 'packager', 'vista' }
@@ -96,7 +122,8 @@ gls.left[2] = {
   FileName = {
     --provider = 'FileName',
     -- The FileName provider strips the path, which I want to keep
-    provider = function() return vim.fn.expand("%") .. " " end,
+    --provider = function() return vim.fn.expand("%") .. " " end,
+    provider = get_current_file_name,
     --condition = buffer_not_empty,
     highlight = { colors.fg, colors.section_bg },
     separator = " ",
