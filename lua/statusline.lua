@@ -121,7 +121,9 @@ gls.left[1] = {
 gls.left[3] = {
   GitBranch = {
     provider = 'GitBranch',
-    condition = condition.buffer_not_empty,
+    condition = function()
+        return condition.buffer_not_empty() and condition.hide_in_width()
+    end,
     icon = ' ',
     separator = ' ',
     highlight = {colors.fg,colors.section_bg},
