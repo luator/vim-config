@@ -18,17 +18,33 @@ local gls = gl.section
 gl.short_line_list = { 'defx', 'packager', 'vista' }
 
 -- Colors
+--local colors = {
+--  bg = '#282a36',
+--  fg = '#f8f8f2',
+--  section_bg = '#38393f',
+--  yellow = '#f1fa8c',
+--  cyan = '#8be9fd',
+--  green = '#50fa7b',
+--  orange = '#ffb86c',
+--  magenta = '#ff79c6',
+--  blue = '#8be9fd',
+--  red = '#ff5555'
+--}
+
+-- Solarized dark
 local colors = {
-  bg = '#282a36',
-  fg = '#f8f8f2',
-  section_bg = '#38393f',
-  yellow = '#f1fa8c',
-  cyan = '#8be9fd',
-  green = '#50fa7b',
-  orange = '#ffb86c',
-  magenta = '#ff79c6',
-  blue = '#8be9fd',
-  red = '#ff5555'
+  --bg = '#002b36',  -- base03
+  bg = '#03303c',  -- half-way between base03 and base02
+  fg = '#839496',  -- base0
+  section_bg = '#073642', -- base02
+  yellow = '#b58900',
+  cyan = '#2aa198',
+  green = '#859900',
+  orange = '#cb4b16',
+  magenta = '#d33682',
+  violet = '#6c71c4',
+  blue = '#268bd2',
+  red = '#dc322f'
 }
 
 -- Local helper functions
@@ -56,12 +72,6 @@ end
 
 -- Left side
 gls.left[1] = {
-  FirstElement = {
-    provider = function() return '▋' end,
-    highlight = { colors.cyan, colors.section_bg }
-  },
-}
-gls.left[2] = {
   ViMode = {
     provider = function()
       local alias = {
@@ -76,12 +86,13 @@ gls.left[2] = {
       vim.api.nvim_command('hi GalaxyViMode guifg='..mode_color())
       return alias[vim.fn.mode()]..' '
     end,
+    icon = "▋",
     highlight = { colors.bg, colors.bg },
     separator = " ",
     separator_highlight = {colors.bg, colors.section_bg},
   },
 }
-gls.left[4] = {
+gls.left[2] = {
   FileName = {
     --provider = 'FileName',
     -- The FileName provider strips the path, which I want to keep
@@ -92,7 +103,7 @@ gls.left[4] = {
     separator_highlight = {colors.section_bg, colors.bg},
   }
 }
---gls.left[6] = {
+--gls.left[3] = {
 --  GitBranch = {
 --    provider = function()
 --      local vcs = require('galaxyline.provider_vcs')
@@ -109,7 +120,7 @@ gls.left[4] = {
 --    highlight = {colors.fg,colors.bg},
 --  }
 --}
-gls.left[5] = {
+gls.left[3] = {
   GitBranch = {
     provider = 'GitBranch',
     condition = buffer_not_empty,
@@ -180,6 +191,23 @@ gls.left[15] = {
   }
 }
 
+
+--gls.mid[1] = {
+--  ShowLspClient = {
+--    provider = 'GetLspClient',
+--    condition = function ()
+--      local tbl = {['dashboard'] = true,['']=true}
+--      if tbl[vim.bo.filetype] then
+--        return false
+--      end
+--      return true
+--    end,
+--    icon = ' LSP:',
+--    highlight = {colors.fg,colors.bg}
+--  }
+--}
+--
+--
 -- Right side
 gls.right[1]= {
   FileFormat = {
