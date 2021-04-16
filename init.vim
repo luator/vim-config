@@ -332,6 +332,9 @@ let $VTE_VERSION="100"
 
 
 :lua require('gitsigns').setup()
+:highlight! link GitSignsAdd DiffAdd
+:highlight! link GitSignsChange DiffChange
+:highlight! link GitSignsDelete DiffDelete
 
 :lua require('statusline')
 ":lua require('eviline')
