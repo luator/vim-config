@@ -326,6 +326,12 @@ let $VTE_VERSION="100"
 " lspconfig  (see :help lsp)
 :lua require('lsp_config')
 
+":lua require('treesitter')
+"set foldmethod=expr
+"set foldexpr=nvim_treesitter#foldexpr()
+"highlight link TSFuncBuiltin TSFunction
+"highlight link TSPunctBracket TSNormal
+"highlight link TSPunctDelimiter TSNormal
 
 
 """ airline
