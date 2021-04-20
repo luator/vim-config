@@ -81,7 +81,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-set linebreak
 set showbreak=…
 set textwidth=80
 "set colorcolumn=80,120
