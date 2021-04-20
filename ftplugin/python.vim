@@ -3,6 +3,9 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set textwidth=79
+" No automatic line break in code (as this breaks the syntax way too often),
+" but keep it for comments.
+set formatoptions-=t
 
 " show line numbers
 set number
