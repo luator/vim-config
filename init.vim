@@ -88,6 +88,9 @@ set textwidth=80
 " Visualize the line were tw will break (http://superuser.com/a/207548/226624)
 set colorcolumn=+0
 
+" Always show the signcolumn to have a more stable UI
+set signcolumn=yes:1
+
 " Visualize tabs and trailing spaces.
 set list
 set listchars=tab:⇥\ ,trail:·
