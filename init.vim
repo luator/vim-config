@@ -199,7 +199,7 @@ au TextYankPost * silent! lua vim.highlight.on_yank()
 
 call plug#begin(stdpath('data') . '/plugged')
 
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-sensible'
