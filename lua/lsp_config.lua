@@ -81,7 +81,7 @@ if vim.lsp then
     -- for f in build/*/compile_commands.json; do ln -s $(realpath $f) $(echo $f | sed 's/build/src/'); done
     lspconfig.clangd.setup{
         on_attach = on_attach,
-        cmd = { "clangd-9", "--background-index" },
+        cmd = { "clangd-10", "--background-index" },
     }
 
     -- Settings for displaying LSP diagnostics
