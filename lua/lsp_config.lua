@@ -52,10 +52,10 @@ end
 
 
 if vim.lsp then
-    lspconfig.pyls.setup{
+    lspconfig.pylsp.setup{
         on_attach = on_attach,
         settings = {
-            pyls = {
+            pylsp = {
                 configurationSources = { "flake8" },
                 plugins = {
                     -- disable formatters to ensure they don't mess with black
@@ -66,8 +66,7 @@ if vim.lsp then
                         enabled = false
                     },
 
-                    pyls_mypy = {
-                        enabled = true,
+                    ["mypy-ls"] = {
                         -- disable live_mode as it is not aware of the file path
                         -- and thus causes false alerts on relative imports
                         live_mode = false,

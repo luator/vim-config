@@ -10,6 +10,6 @@ To use this configuration with neovim
 
 ## Install Python Language Server
 
-    pip install python-language-server
-    pip install pyls-mypy
-    pip install pyls-black
+    pip install python-lsp-server
+    pip install python-lsp-black
+    pip install mypy-ls
