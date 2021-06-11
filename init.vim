@@ -207,7 +207,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-fugitive'
 Plug 'hynek/vim-python-pep8-indent'
-Plug 'vhdirk/vim-cmake'
+Plug 'vhdirk/vim-cmake', { 'on': ['CMake', 'CMakeClean', 'CMakeFindBuildDir'] }
 Plug 'vim-latex/vim-latex'
 Plug 'rhysd/vim-clang-format'
 "Plug 'psf/black', { 'on': 'Black' }
