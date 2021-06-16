@@ -6,6 +6,8 @@ set textwidth=79
 " No automatic line break in code (as this breaks the syntax way too often),
 " but keep it for comments.
 set formatoptions-=t
+" set comment leader for Python
+set comments=b:#
 
 " show line numbers
 set number
