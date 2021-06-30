@@ -221,6 +221,7 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'vimwiki/vimwiki'
 Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
+" TODO is this still useful with treesitter?
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'neovim/nvim-lspconfig'
 Plug 'Rykka/riv.vim'
@@ -234,6 +235,10 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 
 Plug 'ray-x/lsp_signature.nvim'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/playground'
+
 
 call plug#end()
 " vim-plug commands:
@@ -329,12 +334,12 @@ let $VTE_VERSION="100"
 " lspconfig  (see :help lsp)
 :lua require('lsp_config')
 
-":lua require('treesitter')
-"set foldmethod=expr
-"set foldexpr=nvim_treesitter#foldexpr()
-"highlight link TSFuncBuiltin TSFunction
-"highlight link TSPunctBracket TSNormal
-"highlight link TSPunctDelimiter TSNormal
+:lua require('treesitter')
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+highlight link TSFuncBuiltin TSFunction
+highlight link TSPunctBracket TSNormal
+highlight link TSPunctDelimiter TSNormal
 
 
 """ airline
