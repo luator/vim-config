@@ -233,6 +233,8 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 
+Plug 'ray-x/lsp_signature.nvim'
+
 call plug#end()
 " vim-plug commands:
 " PlugInstall [name ...] [#threads] Install plugins

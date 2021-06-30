@@ -48,6 +48,9 @@ local on_attach = function(client, bufnr)
   --    augroup END
   --  ]], false)
   --end
+
+  -- TODO not working so well at the moment, try out again in a while
+  -- require'lsp_signature'.on_attach()
 end
 
 
