@@ -201,7 +201,7 @@ au TextYankPost * silent! lua vim.highlight.on_yank()
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-apathy'
@@ -268,8 +268,8 @@ let g:tex_flavor='latex'
 
 
 """ NERD Commenter
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
 
 
 """ Syntastic
