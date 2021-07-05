@@ -237,6 +237,7 @@ Plug 'lewis6991/gitsigns.nvim'
 Plug 'ray-x/lsp_signature.nvim'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 Plug 'nvim-treesitter/playground'
 
 

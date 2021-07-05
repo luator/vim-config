@@ -9,4 +9,27 @@ require'nvim-treesitter.configs'.setup {
     indent = {
         enable = true
     },
+    textobjects = {
+        select = {
+            enable  = true,
+            keymaps = {
+                ["ac"] = "@comment.outer",
+                ["aC"] = "@class.outer",
+                ["iC"] = "@class.inner",
+                ["af"] = "@function.outer",
+                ["if"] = "@function.inner",
+                ["ab"] = "@block.outer",
+                ["ib"] = "@block.inner",
+            },
+        },
+        swap = {
+            enable = true,
+            swap_next = {
+                ["<leader>s"] = "@parameter.inner",
+            },
+            swap_previous = {
+                ["<leader>S"] = "@parameter.inner",
+            },
+        },
+    },
 }
