@@ -1,3 +1,6 @@
+" This configuration assumes neovim >= 0.5 but will also work (with some
+" limitations) with classical vim.
+
 " Plugins
 """"""""""
 
@@ -13,13 +16,8 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-fugitive'
-Plug 'hynek/vim-python-pep8-indent'
 Plug 'vhdirk/vim-cmake', { 'on': ['CMake', 'CMakeClean', 'CMakeFindBuildDir'] }
 Plug 'vim-latex/vim-latex'
-Plug 'rhysd/vim-clang-format' " TODO
-"Plug 'psf/black', { 'on': 'Black' }
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/a.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'google/vim-searchindex'
@@ -28,11 +26,8 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'vimwiki/vimwiki'
 Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
-" TODO is this still useful with treesitter?
-Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'Rykka/riv.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'lifepillar/vim-solarized8'
 
 if has('nvim')
     Plug 'neovim/nvim-lspconfig'
@@ -41,6 +36,7 @@ if has('nvim')
 
     Plug 'glepnir/galaxyline.nvim', {'branch': 'main'}
     Plug 'kyazdani42/nvim-web-devicons'
+
     Plug 'nvim-lua/plenary.nvim'
     Plug 'lewis6991/gitsigns.nvim'
 
@@ -51,6 +47,11 @@ if has('nvim')
     Plug 'nvim-treesitter/playground'
 
     Plug 'folke/which-key.nvim'
+else
+    Plug 'lifepillar/vim-solarized8'
+    Plug 'rhysd/vim-clang-format'
+    Plug 'psf/black', { 'on': 'Black' }
+    Plug 'Vimjas/vim-python-pep8-indent'
 endif
 
 call plug#end()
@@ -69,22 +70,6 @@ call plug#end()
 
 set backup          " keep a backup file
 set history=50      " keep 50 lines of command line history
-
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-  set mouse=a
-endif
-
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
-" Also don't do it when the mark is in the first line, that is the default
-" position when opening a file.
-autocmd BufReadPost *
-\ if line("'\"") > 1 && line("'\"") <= line("$") |
-\   exe "normal! g`\"" |
-\ endif
-
 
 set tabstop=4
 set softtabstop=4
@@ -138,6 +123,22 @@ if has('nvim')
 else
     colorscheme solarized8
 endif
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+" Also don't do it when the mark is in the first line, that is the default
+" position when opening a file.
+autocmd BufReadPost *
+\ if line("'\"") > 1 && line("'\"") <= line("$") |
+\   exe "normal! g`\"" |
+\ endif
+
 
 
 " Key Bindings
@@ -211,7 +212,6 @@ command Bc bp | bd#
 
 " ROS launch files are xml
 au BufNewFile,BufRead *.launch set filetype=xml
-
 
 
 " Plugin Configuration
