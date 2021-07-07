@@ -227,9 +227,11 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'Rykka/riv.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'nvim-lua/completion-nvim'
-Plug 'lifepillar/vim-solarized8'
 
-Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Plug 'lifepillar/vim-solarized8'
+Plug 'luator/nvim-solarized-lua'
+
+Plug 'glepnir/galaxyline.nvim', {'branch': 'main'}
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'lewis6991/gitsigns.nvim'
@@ -257,7 +259,8 @@ call plug#end()
 " set colorscheme
 set background=dark
 set termguicolors
-colorscheme solarized8
+"colorscheme solarized8
+colorscheme solarized
 
 """ Latex
 
@@ -340,9 +343,6 @@ let $VTE_VERSION="100"
 :lua require('treesitter')
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-highlight link TSFuncBuiltin TSFunction
-highlight link TSPunctBracket TSNormal
-highlight link TSPunctDelimiter TSNormal
 
 
 """ airline
@@ -351,9 +351,6 @@ highlight link TSPunctDelimiter TSNormal
 
 
 :lua require('gitsigns').setup()
-:highlight! link GitSignsAdd DiffAdd
-:highlight! link GitSignsChange DiffChange
-:highlight! link GitSignsDelete DiffDelete
 
 :lua require('statusline')
 ":lua require('eviline')
