@@ -1,3 +1,69 @@
+" Plugins
+""""""""""
+
+if has('nvim')
+    call plug#begin(stdpath('data') . '/plugged')
+else
+    call plug#begin('~/.vim-plugged')
+endif
+
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'preservim/nerdcommenter'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-apathy'
+Plug 'tpope/vim-fugitive'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'vhdirk/vim-cmake', { 'on': ['CMake', 'CMakeClean', 'CMakeFindBuildDir'] }
+Plug 'vim-latex/vim-latex'
+Plug 'rhysd/vim-clang-format' " TODO
+"Plug 'psf/black', { 'on': 'Black' }
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/a.vim'
+Plug 'machakann/vim-sandwich'
+Plug 'google/vim-searchindex'
+Plug 'mileszs/ack.vim'
+Plug 'vim-scripts/DoxygenToolkit.vim'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'vimwiki/vimwiki'
+Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
+" TODO is this still useful with treesitter?
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'Rykka/riv.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'lifepillar/vim-solarized8'
+
+if has('nvim')
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/completion-nvim'
+    Plug 'luator/nvim-solarized-lua'
+
+    Plug 'glepnir/galaxyline.nvim', {'branch': 'main'}
+    Plug 'kyazdani42/nvim-web-devicons'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'lewis6991/gitsigns.nvim'
+
+    Plug 'ray-x/lsp_signature.nvim'
+
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+    Plug 'nvim-treesitter/playground'
+
+    Plug 'folke/which-key.nvim'
+endif
+
+call plug#end()
+" vim-plug commands:
+" PlugInstall [name ...] [#threads] Install plugins
+" PlugUpdate [name ...] [#threads]  Install or update plugins
+" PlugClean[!]  Remove unlisted plugins (bang version will clean without prompt)
+" PlugUpgrade   Upgrade vim-plug itself
+" PlugStatus    Check the status of plugins
+" PlugDiff  Examine changes from the previous update and the pending changes
+" PlugSnapshot[!] [output path] Generate script for restoring the current snapshot of the plugins
+
+
 " General Settings
 """""""""""""""""""
 
@@ -33,7 +99,7 @@ set textwidth=80
 set colorcolumn=+0
 
 " Always show the signcolumn to have a more stable UI
-set signcolumn=yes:1
+silent! set signcolumn=yes:1
 
 " Visualize tabs and trailing spaces.
 set list
@@ -55,6 +121,23 @@ au FocusGained * :checktime
 
 " set the timeout for CursorHold (the default is pretty long)
 set updatetime=1000
+
+" Look for ctags file in current directory and climb up to root if not found
+set tags=./tags;/
+
+" Enable spell check and set language to british english.
+set spell
+set spelllang=en_gb
+
+
+" set colorscheme
+set background=dark
+set termguicolors
+if has('nvim')
+    colorscheme solarized  " this is lua-based so only works for nvim
+else
+    colorscheme solarized8
+endif
 
 
 " Key Bindings
@@ -130,90 +213,9 @@ command Bc bp | bd#
 au BufNewFile,BufRead *.launch set filetype=xml
 
 
-" Misc
-"""""""
 
-" Look for ctags file in current directory and climb up to root if not found
-set tags=./tags;/
-
-" Enable spell check and set language to british english.
-set spell
-set spelllang=en_gb
-
-
-" Neovim-specific configuration
-"""""""""""""""""""""""""""""""
-
-" Highlight yanked text for a brief moment
-au TextYankPost * silent! lua vim.highlight.on_yank()
-
-
-" Plugins
-""""""""""
-
-call plug#begin(stdpath('data') . '/plugged')
-
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'preservim/nerdcommenter'
-Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-apathy'
-Plug 'tpope/vim-fugitive'
-Plug 'hynek/vim-python-pep8-indent'
-Plug 'vhdirk/vim-cmake', { 'on': ['CMake', 'CMakeClean', 'CMakeFindBuildDir'] }
-Plug 'vim-latex/vim-latex'
-Plug 'rhysd/vim-clang-format'
-"Plug 'psf/black', { 'on': 'Black' }
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/a.vim'
-Plug 'machakann/vim-sandwich'
-Plug 'google/vim-searchindex'
-Plug 'mileszs/ack.vim'
-Plug 'vim-scripts/DoxygenToolkit.vim'
-Plug 'jlanzarotta/bufexplorer'
-Plug 'vimwiki/vimwiki'
-Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
-" TODO is this still useful with treesitter?
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'neovim/nvim-lspconfig'
-Plug 'Rykka/riv.vim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'nvim-lua/completion-nvim'
-
-Plug 'lifepillar/vim-solarized8'
-Plug 'luator/nvim-solarized-lua'
-
-Plug 'glepnir/galaxyline.nvim', {'branch': 'main'}
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'lewis6991/gitsigns.nvim'
-
-Plug 'ray-x/lsp_signature.nvim'
-
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/nvim-treesitter-textobjects'
-Plug 'nvim-treesitter/playground'
-
-Plug 'folke/which-key.nvim'
-
-
-call plug#end()
-" vim-plug commands:
-" PlugInstall [name ...] [#threads] Install plugins
-" PlugUpdate [name ...] [#threads]  Install or update plugins
-" PlugClean[!]  Remove unlisted plugins (bang version will clean without prompt)
-" PlugUpgrade   Upgrade vim-plug itself
-" PlugStatus    Check the status of plugins
-" PlugDiff  Examine changes from the previous update and the pending changes
-" PlugSnapshot[!] [output path] Generate script for restoring the current snapshot of the plugins
-
-
-" set colorscheme
-set background=dark
-set termguicolors
-"colorscheme solarized8
-colorscheme solarized
+" Plugin Configuration
+""""""""""""""""""""""
 
 """ Latex
 
@@ -232,13 +234,13 @@ let g:NERDDefaultAlign = 'left'
 
 
 """ CtrlP
-
 let g:ctrlp_custom_ignore = '\v(\.pyc|\~|build)$'  " ignore *.pyc files
 let g:ctrlp_working_path_mode = 'wra'
 
 
 """ Riv (reST plugin)
 let g:riv_disable_folding = 1
+
 
 """ Ack
 " use ag instead of ack
@@ -258,41 +260,43 @@ let g:vimwiki_global_ext = 0
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 
-""" NeoVim specific
-" https://github.com/neovim/neovim/issues/5990
-let $VTE_VERSION="100"
 
-" lspconfig  (see :help lsp)
-lua require('lsp_config')
+" Neovim-specific configuration
+"""""""""""""""""""""""""""""""
 
-lua require('treesitter')
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+if has('nvim')
+    " Highlight yanked text for a brief moment
+    au TextYankPost * silent! lua vim.highlight.on_yank()
+
+    " https://github.com/neovim/neovim/issues/5990
+    let $VTE_VERSION="100"
+
+    " lspconfig  (see :help lsp)
+    lua require('lsp_config')
+
+    lua require('treesitter')
+    set foldmethod=expr
+    set foldexpr=nvim_treesitter#foldexpr()
+
+    lua require('gitsigns').setup()
+
+    lua require('statusline')
+    "lua require('eviline')
+    "lua require('spaceline')
 
 
-""" airline
-" remove 'spell' from section a
-"let g:airline_section_a = airline#section#create_left(['mode', 'crypt', 'paste', 'keymap', 'capslock', 'xkblayout', 'iminsert'])
+    """ completion-nvim
 
+    " Use completion-nvim in every buffer
+    autocmd BufEnter * lua require'completion'.on_attach()
 
-lua require('gitsigns').setup()
+    " Use <Tab> and <S-Tab> to navigate through popup menu
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-lua require('statusline')
-"lua require('eviline')
-"lua require('spaceline')
+    " Set completeopt to have a better completion experience
+    set completeopt=menuone,noinsert,noselect
 
-
-""" completion-nvim
-
-" Use completion-nvim in every buffer
-autocmd BufEnter * lua require'completion'.on_attach()
-
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
-
-" Avoid showing extra message when using completion
-set shortmess+=c
+    " Avoid showing extra message when using completion
+    set shortmess+=c
+endif
