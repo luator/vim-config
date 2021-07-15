@@ -120,6 +120,8 @@ set background=dark
 set termguicolors
 if has('nvim')
     colorscheme solarized  " this is lua-based so only works for nvim
+    " error highlighting is too noisy while editing, so disable it
+    highlight! link TSError Normal
 else
     colorscheme solarized8
 endif
