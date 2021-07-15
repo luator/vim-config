@@ -1,6 +1,23 @@
 " This configuration assumes neovim >= 0.5 but will also work (with some
 " limitations) with classical vim.
 
+
+" Pre-Plugin Settings
+""""""""""""""""""""""
+
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+" Also don't do it when the mark is in the first line, that is the default
+" position when opening a file.
+" NOTE: This has to be done before calling plug as otherwise it will overwrite
+" file-type specific actions (e.g. in gitcommit.vim)
+autocmd BufReadPost *
+\ if line("'\"") > 1 && line("'\"") <= line("$") |
+\   exe "normal! g`\"" |
+\ endif
+
+
 " Plugins
 """"""""""
 
@@ -130,17 +147,6 @@ endif
 if has('mouse')
   set mouse=a
 endif
-
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
-" Also don't do it when the mark is in the first line, that is the default
-" position when opening a file.
-autocmd BufReadPost *
-\ if line("'\"") > 1 && line("'\"") <= line("$") |
-\   exe "normal! g`\"" |
-\ endif
-
 
 
 " Key Bindings
