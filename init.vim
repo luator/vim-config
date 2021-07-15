@@ -28,6 +28,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
 Plug 'Rykka/riv.vim'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 if has('nvim')
     Plug 'neovim/nvim-lspconfig'
@@ -51,7 +52,6 @@ else
     Plug 'lifepillar/vim-solarized8'
     Plug 'rhysd/vim-clang-format'
     Plug 'psf/black', { 'on': 'Black' }
-    Plug 'Vimjas/vim-python-pep8-indent'
 endif
 
 call plug#end()
