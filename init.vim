@@ -293,6 +293,7 @@ if has('nvim')
     "lua require('eviline')
     "lua require('spaceline')
 
+    lua require('which-key').setup()
 
     """ completion-nvim
 
