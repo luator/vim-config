@@ -52,7 +52,7 @@ if has('nvim')
     Plug 'nvim-lua/completion-nvim'
     Plug 'luator/nvim-solarized-lua'
 
-    Plug 'glepnir/galaxyline.nvim', {'branch': 'main'}
+    Plug 'famiu/feline.nvim', { 'branch': 'master' }
     Plug 'kyazdani42/nvim-web-devicons'
 
     Plug 'nvim-lua/plenary.nvim'
@@ -289,9 +289,7 @@ if has('nvim')
 
     lua require('gitsigns').setup()
 
-    lua require('statusline')
-    "lua require('eviline')
-    "lua require('spaceline')
+    lua require('feline_statusline')
 
     lua require('which-key').setup()
 
