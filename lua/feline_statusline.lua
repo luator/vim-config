@@ -41,17 +41,17 @@ local vi_mode_colors = {
 }
 
 local vi_mode_text = {
-    NORMAL = 'Ⓝ',
+    NORMAL = 'Ⓝ ',
     OP = '<|',
-    INSERT = 'Ⓘ',
-    VISUAL = 'Ⓥ',
-    BLOCK = 'Ⓥ',
-    REPLACE = 'Ⓡ',
-    ['V-REPLACE'] = 'Ⓡ',
+    INSERT = 'Ⓘ ',
+    VISUAL = 'Ⓥ ',
+    BLOCK = 'Ⓥ ',
+    REPLACE = 'Ⓡ ',
+    ['V-REPLACE'] = 'Ⓡ ',
     ENTER = '<>',
     MORE = '<>',
     SELECT = '<>',
-    COMMAND = 'Ⓒ',
+    COMMAND = 'Ⓒ ',
     SHELL = '<|',
     TERM = '<|',
     NONE = '<>'
@@ -78,7 +78,6 @@ table.insert(components.active[1], {
             style = 'bold'
         }
     end,
-    right_sep = ' ',
 })
 
 -- GIT
@@ -87,7 +86,7 @@ table.insert(components.active[1], {
     enabled = is_wide,
     icon = '  ',
     hl = {bg='section_bg'},
-    left_sep = {str = 'slant_left_2', hl = {fg = 'section_bg', bg = 'bg'}},
+    left_sep = {str = 'slant_left_2', hl = {fg = 'section_bg'}},
     right_sep = {str = ' ', hl = {bg = 'section_bg'}},
 })
 -- diffAdd
@@ -119,7 +118,12 @@ table.insert(components.active[1], {
 })
 table.insert(components.active[1], {
     provider = ' ',
-    enabled = is_wide,
+    enabled = function(winid)
+        return is_wide and
+            -- the git_* provides are automatically disabled if there is no git
+            -- repo but for this separator entry we need to check manually
+            require('feline.providers.git').git_info_exists(winid)
+    end,
     hl = { bg = 'section_bg' },
     right_sep = {
         {str = 'slant_right_2', hl = {fg = 'section_bg'}},
@@ -128,9 +132,13 @@ table.insert(components.active[1], {
 
 -- filename
 table.insert(components.active[1], {
-    provider = 'file_info',
-    file_modified_icon = '',
-    type = 'relative-short',
+    provider = {
+        name = 'file_info',
+        opts = {
+            type = 'relative-short',
+            file_modified_icon = '',
+        },
+    },
     --type = 'base-only',
     left_sep = ' ',
 })
@@ -169,7 +177,7 @@ table.insert(components.active[2], {
     provider = 'file_type',
     hl = { bg = 'section_bg' },
     left_sep = {
-        {str = 'slant_left', hl = {fg = 'section_bg', bg = 'bg'}},
+        {str = 'slant_left', hl = {fg = 'section_bg'}},
         {str = ' ', hl = {bg = 'section_bg'}},
     },
 })
@@ -190,13 +198,12 @@ table.insert(components.inactive[1], {
     colored_icon = false,
     file_modified_icon = '',
     type = 'relative-short',
+    left_sep = ' ',
 })
 
 
 require('feline').setup({
     colors = colors,
-    default_bg = bg,
-    default_fg = fg,
     vi_mode_colors = vi_mode_colors,
     components = components,
 })
