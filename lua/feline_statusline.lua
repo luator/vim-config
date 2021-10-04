@@ -1,11 +1,6 @@
 local lsp = require('feline.providers.lsp')
 local vi_mode_utils = require('feline.providers.vi_mode')
 
--- check if the window is > 80 chars
-function is_wide(winid)
-    return vim.api.nvim_win_get_width(winid) > 80
-end
-
 
 -- Solarized dark
 local colors = {
@@ -83,7 +78,7 @@ table.insert(components.active[1], {
 -- GIT
 table.insert(components.active[1], {
     provider = 'git_branch',
-    enabled = is_wide,
+    truncate_hide = true,
     icon = '  ',
     hl = {bg='section_bg'},
     left_sep = {str = 'slant_left_2', hl = {fg = 'section_bg'}},
@@ -92,7 +87,6 @@ table.insert(components.active[1], {
 -- diffAdd
 table.insert(components.active[1], {
     provider = 'git_diff_added',
-    enabled = is_wide,
     hl = {
         fg = 'green',
         bg = 'section_bg',
@@ -101,7 +95,6 @@ table.insert(components.active[1], {
 -- diffModfified
 table.insert(components.active[1], {
     provider = 'git_diff_changed',
-    enabled = is_wide,
     hl = {
         fg = 'orange',
         bg = 'section_bg',
@@ -110,7 +103,6 @@ table.insert(components.active[1], {
 -- diffRemove
 table.insert(components.active[1], {
     provider = 'git_diff_removed',
-    enabled = is_wide,
     hl = {
         fg = 'red',
         bg = 'section_bg',
@@ -118,12 +110,7 @@ table.insert(components.active[1], {
 })
 table.insert(components.active[1], {
     provider = ' ',
-    enabled = function(winid)
-        return is_wide and
-            -- the git_* provides are automatically disabled if there is no git
-            -- repo but for this separator entry we need to check manually
-            require('feline.providers.git').git_info_exists(winid)
-    end,
+    enabled = require('feline.providers.git').git_info_exists,
     hl = { bg = 'section_bg' },
     right_sep = {
         {str = 'slant_right_2', hl = {fg = 'section_bg'}},
@@ -133,6 +120,13 @@ table.insert(components.active[1], {
 -- filename
 table.insert(components.active[1], {
     provider = {
+        name = 'file_info',
+        opts = {
+            type = 'relative',
+            file_modified_icon = '',
+        },
+    },
+    short_provider = {
         name = 'file_info',
         opts = {
             type = 'relative-short',
