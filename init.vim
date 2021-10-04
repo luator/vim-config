@@ -203,6 +203,7 @@ command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
 " This is a bit complicated but inserts date after cursor position without
 " adding new line.
 command Date execute "normal a<C-R>=strftime('%F')<CR><ESC>"
+command DateTime execute "normal a<C-R>=strftime('%F %H:%M')<CR><ESC>"
 
 " Remove trailing spaces
 command Detrail %s/ \+$//
