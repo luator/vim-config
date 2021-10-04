@@ -43,7 +43,7 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'vimwiki/vimwiki'
 Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
-Plug 'Rykka/riv.vim'
+Plug 'gu-fan/riv.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 
