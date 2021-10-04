@@ -177,8 +177,8 @@ table.insert(components.active[2], {
     provider = 'file_type',
     hl = { bg = 'section_bg' },
     left_sep = {
-        {str = 'slant_left', hl = {fg = 'section_bg'}},
-        {str = ' ', hl = {bg = 'section_bg'}},
+        {str = 'slant_left', hl = {fg = 'section_bg'}, always_visible = true},
+        {str = ' ', hl = {bg = 'section_bg'}, always_visible = true},
     },
 })
 
