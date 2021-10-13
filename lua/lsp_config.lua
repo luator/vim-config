@@ -57,6 +57,7 @@ end
 if vim.lsp then
     lspconfig.pylsp.setup{
         on_attach = on_attach,
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
         settings = {
             pylsp = {
                 configurationSources = { "flake8" },
@@ -83,6 +84,7 @@ if vim.lsp then
     -- for f in build/*/compile_commands.json; do ln -s $(realpath $f) $(echo $f | sed 's/build/src/'); done
     lspconfig.clangd.setup{
         on_attach = on_attach,
+        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
         cmd = { "clangd-10", "--background-index" },
     }
 

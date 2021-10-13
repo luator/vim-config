@@ -49,7 +49,11 @@ Plug 'Vimjas/vim-python-pep8-indent'
 
 if has('nvim')
     Plug 'neovim/nvim-lspconfig'
-    Plug 'nvim-lua/completion-nvim'
+
+    Plug 'hrsh7th/cmp-nvim-lsp'
+    Plug 'hrsh7th/cmp-buffer'
+    Plug 'hrsh7th/nvim-cmp'
+
     Plug 'luator/nvim-solarized-lua'
 
     Plug 'famiu/feline.nvim', { 'tag': 'v0.3.2' }
@@ -166,11 +170,6 @@ nnoremap <silent> <Down> gj
 nnoremap <silent> <Up> gk
 nnoremap <silent> j gj
 nnoremap <silent> k gk
-
-" Remap omnicomplete to Ctrl+Space
-" (http://stackoverflow.com/a/12344382/2095383)
-inoremap <C-Space> <C-x><C-o>
-"inoremap <C-@> <C-Space>
 
 noremap <F3> :cn<CR>
 noremap <F4> :lne<CR>
@@ -294,18 +293,47 @@ if has('nvim')
 
     lua require('which-key').setup()
 
-    """ completion-nvim
+    """ nvim-cmp
+    set completeopt=menu,menuone,noselect
 
-    " Use completion-nvim in every buffer
-    autocmd BufEnter * lua require'completion'.on_attach()
+    lua <<EOF
+      -- Setup nvim-cmp.
+      local cmp = require('cmp')
 
-    " Use <Tab> and <S-Tab> to navigate through popup menu
-    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+      cmp.setup({
+        --snippet = {
+        --  expand = function(args)
+        --    -- For `vsnip` user.
+        --    vim.fn["vsnip#anonymous"](args.body)
 
-    " Set completeopt to have a better completion experience
-    set completeopt=menuone,noinsert,noselect
+        --    -- For `luasnip` user.
+        --    -- require('luasnip').lsp_expand(args.body)
 
-    " Avoid showing extra message when using completion
-    set shortmess+=c
+        --    -- For `ultisnips` user.
+        --    -- vim.fn["UltiSnips#Anon"](args.body)
+        --  end,
+        --},
+        mapping = {
+          ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-f>'] = cmp.mapping.scroll_docs(4),
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.close(),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        },
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'buffer' },
+
+          -- For vsnip user.
+          -- { name = 'vsnip' },
+          -- For luasnip user.
+          -- { name = 'luasnip' },
+          -- For ultisnips user.
+          -- { name = 'ultisnips' },
+        }
+      })
+
+EOF
+
 endif
