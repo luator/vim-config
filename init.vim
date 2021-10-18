@@ -152,6 +152,9 @@ if has('mouse')
   set mouse=a
 endif
 
+" Enable section folding in markdown
+let g:markdown_folding=1
+
 
 " Key Bindings
 """""""""""""""
@@ -262,6 +265,9 @@ let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
 " This will make sure vimwiki will only set the filetype of markdown files
 " inside a wiki directory, rather than globally.
 let g:vimwiki_global_ext = 0
+
+" enable folding
+let g:vimwiki_folding = 'expr'
 
 
 """ editorconfig
