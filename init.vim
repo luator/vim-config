@@ -323,7 +323,7 @@ if has('nvim')
         },
         sources = {
           { name = 'nvim_lsp' },
-          { name = 'buffer' },
+          -- { name = 'buffer' },
 
           -- For vsnip user.
           -- { name = 'vsnip' },
