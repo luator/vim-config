@@ -30,12 +30,11 @@ endif
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-fugitive'
-Plug 'vhdirk/vim-cmake', { 'on': ['CMake', 'CMakeClean', 'CMakeFindBuildDir'] }
+"Plug 'vhdirk/vim-cmake', { 'on': ['CMake', 'CMakeClean', 'CMakeFindBuildDir'] }
 Plug 'vim-latex/vim-latex'
-Plug 'vim-scripts/a.vim'
+"Plug 'vim-scripts/a.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'google/vim-searchindex'
 Plug 'mileszs/ack.vim'
@@ -70,6 +69,7 @@ if has('nvim')
 
     Plug 'folke/which-key.nvim'
 else
+    Plug 'tpope/vim-sensible'
     Plug 'lifepillar/vim-solarized8'
     Plug 'rhysd/vim-clang-format'
     Plug 'psf/black', { 'on': 'Black' }
