@@ -1,2 +1,1 @@
-" show line numbers
-set number
+noremap <F2> :ClangdSwitchSourceHeader<CR>
