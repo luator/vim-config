@@ -49,9 +49,13 @@ local on_attach = function(client, bufnr)
   --  ]], false)
   --end
 
-  -- TODO not working so well at the moment, try out again in a while
-  -- require'lsp_signature'.on_attach()
+  require'lsp_signature'.on_attach()
 end
+
+require("lsp_signature").setup({
+    doc_lines=0,
+    hint_enable=false,
+})
 
 
 if vim.lsp then
