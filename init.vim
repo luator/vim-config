@@ -1,4 +1,4 @@
-" This configuration assumes neovim >= 0.5 but will also work (with some
+" This configuration assumes neovim >= 0.6 but will also work (with some
 " limitations) with classical vim.
 
 
@@ -53,6 +53,11 @@ if has('nvim')
     Plug 'hrsh7th/cmp-buffer'
     Plug 'hrsh7th/nvim-cmp'
 
+    Plug 'hrsh7th/cmp-vsnip'
+    Plug 'hrsh7th/vim-vsnip'
+    Plug 'hrsh7th/vim-vsnip-integ'
+    Plug 'rafamadriz/friendly-snippets'
+
     "Plug 'ishan9299/nvim-solarized-lua'
     Plug 'luator/nvim-solarized-lua'
 
@@ -90,8 +95,7 @@ call plug#end()
 " General Settings
 """""""""""""""""""
 
-set backup          " keep a backup file
-set history=50      " keep 50 lines of command line history
+set backup  " keep a backup file
 
 set tabstop=4
 set softtabstop=4
@@ -115,9 +119,6 @@ set relativenumber
 " Visualize tabs and trailing spaces.
 set list
 set listchars=tab:⇥\ ,trail:·
-
-" allow unsaved buffers to be hidden.
-set hidden
 
 " Bash-like tab completion (http://stackoverflow.com/questions/526858)
 "  1st tab: complete as much as possible
@@ -168,9 +169,6 @@ let g:markdown_folding=1
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
-" Make Y behave like C and D (yank from cursor to end of line)
-nnoremap Y y$
-
 " Normal movement in wrapped lines (http://vim.wikia.com/wiki/VimTip308)
 inoremap <silent> <Down> <C-o>gj
 inoremap <silent> <Up> <C-o>gk
@@ -182,12 +180,7 @@ nnoremap <silent> k gk
 noremap <F3> :cn<CR>
 noremap <F4> :lne<CR>
 
-" Use <M-]> to go back from tags jump <C-]>.  This is a bit more intuitive and
-" avoids collision with C-t in ONI.
-" NOTE: My preferred remapping would be <C-[> but this is equivalent to ESC!
-nnoremap <M-]> <C-t>
-
-" Use Ctrl Alt P to open CtrlPBuffer
+" Use Alt P to open CtrlPBuffer
 noremap <A-p> :CtrlPBuffer<CR>
 
 " Kill ex mode. Instead use Q to execute macro 'q'
@@ -279,11 +272,10 @@ let g:vimwiki_folding = 'expr'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 
-
-" Neovim-specific configuration
-"""""""""""""""""""""""""""""""
-
 if has('nvim')
+    " Neovim-specific configuration
+    """""""""""""""""""""""""""""""
+
     " Highlight yanked text for a brief moment
     au TextYankPost * silent! lua vim.highlight.on_yank()
 
@@ -306,45 +298,15 @@ if has('nvim')
 
     """ nvim-cmp
     set completeopt=menu,menuone,noselect
+    lua require('cmp_config')
+else
+    " Vim-specific configuration
+    """"""""""""""""""""""""""""
 
-    lua <<EOF
-      -- Setup nvim-cmp.
-      local cmp = require('cmp')
+    "" The settings below are already default in neovim
 
-      cmp.setup({
-        --snippet = {
-        --  expand = function(args)
-        --    -- For `vsnip` user.
-        --    vim.fn["vsnip#anonymous"](args.body)
-
-        --    -- For `luasnip` user.
-        --    -- require('luasnip').lsp_expand(args.body)
-
-        --    -- For `ultisnips` user.
-        --    -- vim.fn["UltiSnips#Anon"](args.body)
-        --  end,
-        --},
-        mapping = {
-          ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-          ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-e>'] = cmp.mapping.close(),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        },
-        sources = {
-          { name = 'nvim_lsp' },
-          -- { name = 'buffer' },
-
-          -- For vsnip user.
-          -- { name = 'vsnip' },
-          -- For luasnip user.
-          -- { name = 'luasnip' },
-          -- For ultisnips user.
-          -- { name = 'ultisnips' },
-        }
-      })
-
-EOF
-
+    " allow unsaved buffers to be hidden.
+    set hidden
+    " Make Y behave like C and D (yank from cursor to end of line)
+    nnoremap Y y$
 endif
