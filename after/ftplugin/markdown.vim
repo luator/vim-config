@@ -1,0 +1,2 @@
+highlight link markdownCode String
+highlight link markdownCodeBlock markdownCode
