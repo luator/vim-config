@@ -141,25 +141,25 @@ table.insert(components.active[1], {
 -- diagnosticErrors
 table.insert(components.active[1], {
     provider = 'diagnostic_errors',
-    enabled = function() return lsp.diagnostics_exist('Error') end,
+    enabled = function() return lsp.diagnostics_exist(vim.diagnostic.severity.ERROR) end,
     hl = { fg = 'red' }
 })
 -- diagnosticWarn
 table.insert(components.active[1], {
     provider = 'diagnostic_warnings',
-    enabled = function() return lsp.diagnostics_exist('Warning') end,
+    enabled = function() return lsp.diagnostics_exist(vim.diagnostic.severity.WARNING) end,
     hl = { fg = 'yellow' }
 })
 -- diagnosticHint
 table.insert(components.active[1], {
     provider = 'diagnostic_hints',
-    enabled = function() return lsp.diagnostics_exist('Hint') end,
+    enabled = function() return lsp.diagnostics_exist(vim.diagnostic.severity.HINT) end,
     hl = { fg = 'cyan' }
 })
 -- diagnosticInfo
 table.insert(components.active[1], {
     provider = 'diagnostic_info',
-    enabled = function() return lsp.diagnostics_exist('Information') end,
+    enabled = function() return lsp.diagnostics_exist(vim.diagnostic.severity.INFO) end,
     hl = { fg = 'blue' }
 })
 
@@ -197,7 +197,7 @@ table.insert(components.inactive[1], {
 
 
 require('feline').setup({
-    colors = colors,
+    theme = colors,
     vi_mode_colors = vi_mode_colors,
     components = components,
 })

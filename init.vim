@@ -62,7 +62,7 @@ if has('nvim')
     "Plug 'ishan9299/nvim-solarized-lua'
     Plug 'luator/nvim-solarized-lua'
 
-    Plug 'famiu/feline.nvim', { 'tag': 'v0.3.3' }
+    Plug 'famiu/feline.nvim', { 'tag': 'v0.4.3' }
     Plug 'kyazdani42/nvim-web-devicons'
 
     Plug 'nvim-lua/plenary.nvim'
