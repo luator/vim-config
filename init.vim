@@ -27,7 +27,10 @@ else
     call plug#begin('~/.vim-plugged')
 endif
 
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-apathy'
@@ -181,8 +184,9 @@ nnoremap <silent> k gk
 noremap <F3> :cn<CR>
 noremap <F4> :lne<CR>
 
-" Use Alt P to open CtrlPBuffer
-noremap <A-p> :CtrlPBuffer<CR>
+" fzf key-bindings
+noremap <C-p> :Files<CR>
+noremap <A-p> :Buffers<CR>
 
 " Kill ex mode. Instead use Q to execute macro 'q'
 " Inspired by https://news.ycombinator.com/item?id=8340181
