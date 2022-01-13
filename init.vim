@@ -248,8 +248,13 @@ let g:NERDDefaultAlign = 'left'
 
 
 """ CtrlP
-let g:ctrlp_custom_ignore = '\v(\.pyc|\~|build)$'  " ignore *.pyc files
-let g:ctrlp_working_path_mode = 'wra'
+"let g:ctrlp_custom_ignore = '\v(\.pyc|\~|build)$'  " ignore *.pyc files
+"let g:ctrlp_working_path_mode = 'wra'
+
+""" fzf
+" in vim use ag as search command which by default already excludes a lot of
+" undesired files
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 
 """ Riv (reST plugin)
