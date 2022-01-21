@@ -150,9 +150,12 @@ set spelllang=en_gb
 set background=dark
 set termguicolors
 if has('nvim')
-    colorscheme solarized  " this is lua-based so only works for nvim
-    " error highlighting is too noisy while editing, so disable it
-    highlight! link TSError Normal
+    " this is lua-based so only works for nvim
+    colorscheme solarized
+
+    " some customisation of the colorscheme
+    highlight! link TSPunctBracket Normal
+    highlight! link TSPunctDelimiter Normal
 else
     colorscheme solarized8
 endif
