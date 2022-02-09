@@ -160,6 +160,11 @@ if has('nvim')
     " some customisation of the colorscheme
     highlight! link TSPunctBracket Normal
     highlight! link TSPunctDelimiter Normal
+
+    highlight! link LspReferenceText Visual
+    highlight! link LspReferenceRead Visual
+    highlight! link LspReferenceWrite Visual
+    highlight LspReferenceWrite cterm=reverse,bold gui=reverse,bold
 else
     colorscheme solarized8
 endif
