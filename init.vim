@@ -45,6 +45,7 @@ Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'vimwiki/vimwiki'
+Plug 'michal-h21/vim-zettel'
 Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
 Plug 'gu-fan/riv.vim', {'for': 'rst'}
 Plug 'editorconfig/editorconfig-vim'
@@ -271,7 +272,7 @@ let g:ackprg = 'ag --vimgrep'
 
 
 """ vimwiki
-let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md', 'auto-tags': 1}]
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
 
 " This will make sure vimwiki will only set the filetype of markdown files
@@ -280,6 +281,9 @@ let g:vimwiki_global_ext = 0
 
 " enable folding
 let g:vimwiki_folding = 'expr'
+
+""" vim-zettel
+let g:zettel_fzf_command = "ag --column -o '(?<=^title:).*'"
 
 
 """ editorconfig
