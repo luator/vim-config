@@ -51,6 +51,8 @@ Plug 'gu-fan/riv.vim', {'for': 'rst'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 
+Plug 'junegunn/goyo.vim'
+
 if has('nvim')
     Plug 'neovim/nvim-lspconfig'
 
