@@ -286,6 +286,10 @@ let g:vimwiki_folding = 'expr'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 
+""" vsnip
+let g:vsnip_snippet_dir = fnamemodify(expand("$MYVIMRC"), ":p:h") . '/vsnip'
+
+
 if has('nvim')
     " Neovim-specific configuration
     """""""""""""""""""""""""""""""

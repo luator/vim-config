@@ -1,0 +1,7 @@
+{
+    "ArgParse.add_argument": {
+        "prefix": "add_argument",
+        "body": "parser.add_argument(\"$1\", type=$2, help=\"$3\")",
+        "description": "Add argument to ArgParse instance."
+    }
+}
