@@ -36,7 +36,8 @@ Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-fugitive'
 "Plug 'vhdirk/vim-cmake', { 'on': ['CMake', 'CMakeClean', 'CMakeFindBuildDir'] }
-Plug 'vim-latex/vim-latex'
+"Plug 'vim-latex/vim-latex'
+Plug 'lervag/vimtex', {'tag': 'v2.9'}
 "Plug 'vim-scripts/a.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'google/vim-searchindex'
