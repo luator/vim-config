@@ -7,7 +7,7 @@ require'nvim-treesitter.configs'.setup {
         additional_vim_regex_highlighting = true, -- to prevent spell checking of source code
     },
     indent = {
-        enable = true,
+        enable = false,
         disable = {"python", "yaml", "cpp"},
     },
     textobjects = {
