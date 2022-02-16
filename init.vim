@@ -31,7 +31,7 @@ endif
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdcommenter', {'tag': '2.6.0'}
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-fugitive'
@@ -42,8 +42,8 @@ Plug 'lervag/vimtex', {'tag': 'v2.9'}
 Plug 'machakann/vim-sandwich'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
-Plug 'jlanzarotta/bufexplorer'
-Plug 'vimwiki/vimwiki'
+Plug 'jlanzarotta/bufexplorer', {'tag': 'v7.4.23'}
+Plug 'vimwiki/vimwiki', {'tag': 'v2.5'}
 Plug 'michal-h21/vim-zettel'
 Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
 Plug 'gu-fan/riv.vim', {'for': 'rst'}
@@ -65,14 +65,14 @@ if has('nvim')
     Plug 'hrsh7th/vim-vsnip-integ'
     Plug 'rafamadriz/friendly-snippets'
 
-    "Plug 'ishan9299/nvim-solarized-lua'
-    Plug 'luator/nvim-solarized-lua'
+    Plug 'ishan9299/nvim-solarized-lua'
+    "Plug 'luator/nvim-solarized-lua'
 
-    Plug 'famiu/feline.nvim', { 'tag': 'v1.0.0' }
+    Plug 'famiu/feline.nvim', {'tag': 'v1.0.0'}
     Plug 'kyazdani42/nvim-web-devicons'
 
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'lewis6991/gitsigns.nvim'
+    Plug 'lewis6991/gitsigns.nvim', {'tag': 'v0.4'}
 
     Plug 'ray-x/lsp_signature.nvim'
 
