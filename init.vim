@@ -40,7 +40,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'lervag/vimtex', {'tag': 'v2.9'}
 "Plug 'vim-scripts/a.vim'
 Plug 'machakann/vim-sandwich'
-Plug 'google/vim-searchindex'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'jlanzarotta/bufexplorer'
