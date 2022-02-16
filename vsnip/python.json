@@ -1,4 +1,9 @@
 {
+    "ArgumentParser": {
+        "prefix": "ArgumentParser",
+        "body": "parser = argparse.ArgumentParser(description=__doc__)\n$1\nargs = parser.parse_args()",
+        "description": "Basic argparse block"
+    },
     "ArgParse.add_argument": {
         "prefix": "add_argument",
         "body": "parser.add_argument(\"$1\", type=$2, help=\"$3\")",
