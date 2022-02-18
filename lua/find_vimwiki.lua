@@ -3,7 +3,6 @@
 --
 -- configuration
 local config = {
-    projectsFolder = '/home/felixwidmaier/projects/', --full path without ~
     maxDepth = 3,
     ignoreFolders = { 'node_modules', '.git' },
     rootWikiFolder = '_wiki',
@@ -24,7 +23,7 @@ local function updateVimwikiList(folders)
     local new_list = vim.fn.copy(vimwiki_list_orig)
     for _, f in ipairs(folders) do
         local item = {
-            path = config.projectsFolder..f,
+            path = f,
             syntax = config.wikiConfig.syntax,
             ext = config.wikiConfig.ext
         }
@@ -36,8 +35,7 @@ end
 
 -- function to search project folders for root wiki folders (returns system list)
 local function searchForWikis()
-    local command = 'find ' .. config.projectsFolder ..
-        ' -maxdepth ' .. config.maxDepth
+    local command = 'find .' .. ' -maxdepth ' .. config.maxDepth
     if #config.ignoreFolders > 0 then command = command .. " \\(" end
     for _, f in ipairs(config.ignoreFolders) do
         command = command .. " -path '*/"..f.."/*' -prune"
@@ -48,8 +46,8 @@ local function searchForWikis()
         end
     end
     command = command .. ' -type d -name ' .. config.rootWikiFolder
-    command = command .. ' -print | '
-    command = command .. ' sed s#' .. config.projectsFolder .. '##'
+    command = command .. ' -print '
+    command = command .. ' 2> /dev/null '
     local list = vim.api.nvim_call_function('systemlist', {command})
     return list
 end
@@ -61,21 +59,29 @@ function _G.ProjectWikiOpen(name)
     if not name then
         local wikis = searchForWikis()
         updateVimwikiList(searchForWikis())
-        for _,f in ipairs(vimwiki_list_orig) do table.insert(wikis,f.path) end
-        local options = {
-            sink = function(selected) ProjectWikiOpen(selected) end,
-            source = wikis,
-            options = '--ansi --reverse --no-preview',
-            window = {
-                width = 0.3,
-                height = 0.6,
-                border = 'sharp'
+
+        if #wikis == 1 then
+            -- if there is only one wiki found, open it directly
+            print("Open wiki " .. wikis[1])
+            ProjectWikiOpen(wikis[1])
+        else
+            -- if there are more than one wiki found, use fzf
+            for _,f in ipairs(vimwiki_list_orig) do table.insert(wikis,f.path) end
+            local options = {
+                sink = function(selected) ProjectWikiOpen(selected) end,
+                source = wikis,
+                options = '--ansi --reverse --no-preview',
+                window = {
+                    width = 0.3,
+                    height = 0.6,
+                    border = 'sharp'
+                }
             }
-        }
-        vim.fn.call('fzf#run', {options})
+            vim.fn.call('fzf#run', {options})
+        end
     else
         for i, v in ipairs(vim.g.vimwiki_list) do
-            if v.path == name or v.path == config.projectsFolder..name then
+            if v.path == name then
                 vim.fn.call('vimwiki#base#goto_index',{i})
                 return
             end
