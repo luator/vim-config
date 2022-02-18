@@ -284,6 +284,10 @@ let g:vimwiki_global_ext = 0
 " enable folding
 let g:vimwiki_folding = 'expr'
 
+if has('nvim')
+    lua require('find_vimwiki')
+endif
+
 """ vim-zettel
 let g:zettel_fzf_command = "ag --column -o '(?<=^title:).*'"
 
