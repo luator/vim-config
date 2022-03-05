@@ -303,6 +303,21 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 let g:vsnip_snippet_dir = fnamemodify(expand("$MYVIMRC"), ":p:h") . '/vsnip'
 
 
+""" goyo
+
+function! s:goyo_enter()
+    lua require('gitsigns').detach()
+endfunction
+
+function! s:goyo_leave()
+    lua require('gitsigns').attach()
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+
+
 if has('nvim')
     " Neovim-specific configuration
     """""""""""""""""""""""""""""""
