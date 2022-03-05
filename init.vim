@@ -63,6 +63,7 @@ if has('nvim')
 
     Plug 'ishan9299/nvim-solarized-lua'
     "Plug 'luator/nvim-solarized-lua'
+    Plug 'tobi-wan-kenobi/zengarden'
 
     Plug 'famiu/feline.nvim', {'tag': 'v1.0.0'}
     Plug 'kyazdani42/nvim-web-devicons'
@@ -146,11 +147,13 @@ set spelllang=en_gb
 
 
 " set colorscheme
-set background=dark
+"set background=dark
+set background=light
 set termguicolors
 if has('nvim')
     " this is lua-based so only works for nvim
-    colorscheme solarized
+    "colorscheme solarized
+    colorscheme zengarden
 
     " some customisation of the colorscheme
     highlight! link TSPunctBracket Normal
