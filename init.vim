@@ -119,9 +119,9 @@ set colorcolumn=+0
 " Always show the signcolumn to have a more stable UI
 silent! set signcolumn=yes:1
 
-" enable hybrid relative line numbers
+" enable line numbers
 set number
-set relativenumber
+"set relativenumber
 
 " Visualize tabs and trailing spaces.
 set list
