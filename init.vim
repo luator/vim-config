@@ -39,8 +39,11 @@ Plug 'machakann/vim-sandwich'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'jlanzarotta/bufexplorer', {'tag': 'v7.4.23'}
+
 Plug 'vimwiki/vimwiki', {'tag': 'v2.5'}
 Plug 'michal-h21/vim-zettel'
+Plug 'tools-life/taskwiki'
+
 Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
 Plug 'gu-fan/riv.vim', {'for': 'rst'}
 Plug 'editorconfig/editorconfig-vim'
