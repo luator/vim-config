@@ -3,19 +3,43 @@ local vi_mode_utils = require('feline.providers.vi_mode')
 
 
 -- Solarized dark
+-- local colors = {
+--     --bg = '#002b36',  -- base03
+--     bg = '#03303c',  -- half-way between base03 and base02
+--     fg = '#839496',  -- base0
+--     section_bg = '#073642', -- base02
+--     yellow = '#b58900',
+--     cyan = '#2aa198',
+--     green = '#859900',
+--     orange = '#cb4b16',
+--     magenta = '#d33682',
+--     violet = '#6c71c4',
+--     blue = '#268bd2',
+--     red = '#dc322f'
+-- }
+
+-- Zengarden light
 local colors = {
-    --bg = '#002b36',  -- base03
-    bg = '#03303c',  -- half-way between base03 and base02
-    fg = '#839496',  -- base0
-    section_bg = '#073642', -- base02
-    yellow = '#b58900',
-    cyan = '#2aa198',
-    green = '#859900',
-    orange = '#cb4b16',
-    magenta = '#d33682',
-    violet = '#6c71c4',
-    blue = '#268bd2',
-    red = '#dc322f'
+    bg = '#353839',
+    fg = '#faebd7',  -- base0
+    section_bg = '#505354', -- base02
+
+    -- yellow = '#967117',
+    -- cyan = '#176372',
+    -- green = '#177245',
+    -- orange = '#c04000',
+    -- magenta = '#721772',
+    -- blue = '#26619c',
+    -- red = '#ba1d58'
+
+    yellow = '#d0a44c',
+    cyan = '#5396a6',
+    green = '#53a776',
+    orange = '#ff7639',
+    magenta = '#a94fa6',
+    blue = '#6493d3',
+    red = '#f85e89',
+
 }
 
 local vi_mode_colors = {
