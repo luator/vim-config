@@ -294,9 +294,13 @@ if has('nvim')
     lua require('find_vimwiki')
 endif
 
+" fuzzy-find files in the main vimwiki folder
+nmap <Leader>wo :Files ~/vimwiki/<return>
+
 """ vim-zettel
 let g:zettel_fzf_command = "ag --column -o '(?<=^title:).*'"
-
+nmap <leader>zo :ZettelOpen<return>
+nmap <leader>zn :ZettelNew 
 
 """ editorconfig
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
