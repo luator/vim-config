@@ -1,4 +1,6 @@
-set textwidth=79
+"set textwidth=79
+set textwidth=88
+
 " No automatic line break in code (as this breaks the syntax way too often),
 " but keep it for comments.
 set formatoptions-=t
