@@ -68,7 +68,7 @@ if has('nvim')
     "Plug 'luator/nvim-solarized-lua'
     Plug 'tobi-wan-kenobi/zengarden'
 
-    Plug 'famiu/feline.nvim', {'tag': 'v1.1.0'}
+    Plug 'famiu/feline.nvim', {'tag': 'v1.1.3'}
     Plug 'kyazdani42/nvim-web-devicons'
 
     Plug 'nvim-lua/plenary.nvim'
