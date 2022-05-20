@@ -72,6 +72,12 @@ if vim.lsp then
                     yapf = {
                         enabled = false
                     },
+                    pyflakes = {
+                        enabled = false
+                    },
+                    flake8 = {
+                        enabled = true
+                    },
 
                     ["mypy-ls"] = {
                         -- disable live_mode as it is not aware of the file path
