@@ -32,21 +32,18 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'preservim/nerdcommenter', {'tag': '2.6.0'}
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-apathy'
-Plug 'tpope/vim-fugitive'
-Plug 'lervag/vimtex', {'tag': 'v2.9'}
+Plug 'tpope/vim-fugitive', {'tag': 'v3.7'}
+Plug 'lervag/vimtex', {'tag': 'v2.10'}
 Plug 'machakann/vim-sandwich'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
-Plug 'jlanzarotta/bufexplorer', {'tag': 'v7.4.23'}
+Plug 'jlanzarotta/bufexplorer', {'tag': 'v7.4.24'}
 
 Plug 'vimwiki/vimwiki', {'tag': 'v2.5'}
 Plug 'michal-h21/vim-zettel'
 Plug 'tools-life/taskwiki'
 
 Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
-Plug 'gu-fan/riv.vim', {'for': 'rst'}
-Plug 'editorconfig/editorconfig-vim'
 Plug 'Vimjas/vim-python-pep8-indent'
 
 Plug 'junegunn/goyo.vim'
@@ -64,8 +61,7 @@ if has('nvim')
     Plug 'hrsh7th/vim-vsnip-integ'
     Plug 'rafamadriz/friendly-snippets'
 
-    Plug 'ishan9299/nvim-solarized-lua'
-    "Plug 'luator/nvim-solarized-lua'
+    "Plug 'ishan9299/nvim-solarized-lua'
     Plug 'tobi-wan-kenobi/zengarden'
 
     Plug 'famiu/feline.nvim', {'tag': 'v1.1.3'}
