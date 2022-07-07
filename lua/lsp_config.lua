@@ -79,10 +79,11 @@ if vim.lsp then
                         enabled = true
                     },
 
-                    ["mypy-ls"] = {
+                    ["pylsp-mypy"] = {
                         -- disable live_mode as it is not aware of the file path
                         -- and thus causes false alerts on relative imports
                         live_mode = false,
+                        dmypy = true,
                     },
                 }
             }
