@@ -160,8 +160,9 @@ if has('nvim')
     colorscheme zengarden
 
     " some customisation of the colorscheme
-    highlight! link TSPunctBracket Normal
-    highlight! link TSPunctDelimiter Normal
+    highlight! link TSPunctBracket ZengardenFg1
+    highlight! link TSPunctDelimiter ZengardenFg1
+    highlight! link Operator ZengardenFg1
 
     highlight! link LspReferenceText Visual
     highlight! link LspReferenceRead Visual
