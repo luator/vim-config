@@ -98,6 +98,10 @@ if vim.lsp then
         cmd = { "clangd-12", "--background-index" },
     }
 
+    --Enable (broadcasting) snippet capability for completion
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+
     -- Settings for displaying LSP diagnostics
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
