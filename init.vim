@@ -230,6 +230,9 @@ command ChmodAX !chmod a+x %
 " close file in current buffer and show previous buffer instead
 command Bc bp | bd#
 
+" git commit in new tab (so the full window is used)
+command Commit tab Git commit -v
+
 
 
 " file type mappings
