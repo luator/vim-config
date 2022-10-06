@@ -33,11 +33,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter', {'tag': '2.6.0'}
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive', {'tag': 'v3.7'}
-Plug 'lervag/vimtex', {'tag': 'v2.10'}
+Plug 'lervag/vimtex', {'tag': 'v2.11'}
 Plug 'machakann/vim-sandwich'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
-Plug 'jlanzarotta/bufexplorer', {'tag': 'v7.4.24'}
+Plug 'jlanzarotta/bufexplorer', {'tag': 'v.7.4.25'}
 
 Plug 'vimwiki/vimwiki', {'tag': 'v2.5'}
 Plug 'michal-h21/vim-zettel'
@@ -68,7 +68,7 @@ if has('nvim')
     Plug 'kyazdani42/nvim-web-devicons'
 
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'lewis6991/gitsigns.nvim', {'tag': 'v0.4'}
+    Plug 'lewis6991/gitsigns.nvim', {'tag': 'v0.5'}
 
     Plug 'ray-x/lsp_signature.nvim'
 
