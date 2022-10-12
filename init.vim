@@ -344,7 +344,7 @@ if has('nvim')
     set foldexpr=nvim_treesitter#foldexpr()
     set foldlevel=99  " mostly disable fold by default
 
-    lua require('gitsigns').setup()
+    lua require('gitsigns_config')
 
     lua require('feline_statusline')
 
