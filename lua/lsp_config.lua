@@ -89,7 +89,7 @@ if vim.lsp then
     lspconfig.clangd.setup{
         on_attach = on_attach,
         capabilities = cmp_capabilities,
-        cmd = { "clangd-12", "--background-index" },
+        cmd = { "clangd", "--background-index" },
     }
 
     --Enable (broadcasting) snippet capability for completion
