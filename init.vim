@@ -30,7 +30,7 @@ endif
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-Plug 'preservim/nerdcommenter', {'tag': '2.6.0'}
+Plug 'preservim/nerdcommenter', {'tag': '2.7.0'}
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive', {'tag': 'v3.7'}
 Plug 'lervag/vimtex', {'tag': 'v2.11'}
