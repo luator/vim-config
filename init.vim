@@ -193,6 +193,9 @@ nnoremap <silent> <Up> gk
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 
+" create file under cursor (https://stackoverflow.com/a/6159415)
+noremap <leader>gf :e <cfile><cr>
+
 noremap <F3> :cn<CR>
 noremap <F4> :lne<CR>
 
@@ -203,6 +206,10 @@ noremap <A-p> :Buffers<CR>
 " Kill ex mode. Instead use Q to execute macro 'q'
 " Inspired by https://news.ycombinator.com/item?id=8340181
 nnoremap Q @q
+
+" https://www.kevinli.co/posts/2017-01-19-multiple-cursors-in-500-bytes-of-vimscript/
+nnoremap cn *``cgn
+nnoremap cN *``cgN
 
 " call the lazygit plugin
 nnoremap <silent> <leader>lg :LazyGit<CR>
