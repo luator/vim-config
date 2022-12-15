@@ -47,6 +47,7 @@ Plug 'singularityware/singularity.lang', {'rtp': 'vim/'}
 Plug 'Vimjas/vim-python-pep8-indent'
 
 Plug 'junegunn/goyo.vim'
+Plug 'szw/vim-maximizer'
 
 if has('nvim')
     Plug 'neovim/nvim-lspconfig'
@@ -334,6 +335,9 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
+
+""" vim-maximizer
+let g:maximizer_default_mapping_key = '<F5>'
 
 
 if has('nvim')
