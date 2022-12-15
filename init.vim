@@ -39,7 +39,7 @@ Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'jlanzarotta/bufexplorer', {'tag': 'v.7.4.25'}
 
-Plug 'vimwiki/vimwiki', {'tag': 'v2.5'}
+Plug 'vimwiki/vimwiki', {'tag': 'v2022.12.02'}
 Plug 'michal-h21/vim-zettel'
 Plug 'tools-life/taskwiki'
 
