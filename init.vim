@@ -69,6 +69,7 @@ if has('nvim')
 
     Plug 'nvim-lua/plenary.nvim'
     Plug 'lewis6991/gitsigns.nvim', {'tag': 'v0.5'}
+    Plug 'kdheepak/lazygit.nvim'
 
     Plug 'ray-x/lsp_signature.nvim'
 
@@ -203,10 +204,12 @@ noremap <A-p> :Buffers<CR>
 " Inspired by https://news.ycombinator.com/item?id=8340181
 nnoremap Q @q
 
+" call the lazygit plugin
+nnoremap <silent> <leader>lg :LazyGit<CR>
+
 
 " User-defined Commands
 """"""""""""""""""""""""
-
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
