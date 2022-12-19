@@ -21,6 +21,8 @@ require'nvim-treesitter.configs'.setup {
                 ["if"] = "@function.inner",
                 ["ab"] = "@block.outer",
                 ["ib"] = "@block.inner",
+                ["ia"] = "@parameter.inner",
+                ["iA"] = "@parameter.outer",
             },
         },
         swap = {
