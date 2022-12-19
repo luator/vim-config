@@ -8,5 +8,10 @@
         "prefix": "add_argument",
         "body": "parser.add_argument(\"$1\", type=$2, help=\"$3\")",
         "description": "Add argument to ArgParse instance."
+    },
+    "__exit__": {
+        "prefix": "__exit__",
+        "body": "def __exit__(self, exc_type, exc_value, exc_traceback):\n    $1",
+        "description": "__exit__ method skeleton."
     }
 }
