@@ -194,6 +194,11 @@ nnoremap <silent> <Up> gk
 nnoremap <silent> j gj
 nnoremap <silent> k gk
 
+" swap p and P in visual mode (P keeps the old value in the clipboard, which I
+" want to be the default).
+vnoremap p P
+vnoremap P p
+
 " create file under cursor (https://stackoverflow.com/a/6159415)
 noremap <leader>gf :e <cfile><cr>
 
