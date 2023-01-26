@@ -79,7 +79,7 @@ if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter-context'
     Plug 'nvim-treesitter/playground'
 
-    Plug 'folke/which-key.nvim'
+    Plug 'folke/which-key.nvim', {'tag': 'v1.1.0'}
 else
     Plug 'tpope/vim-sensible'
     Plug 'lifepillar/vim-solarized8'
