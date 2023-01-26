@@ -69,7 +69,7 @@ if has('nvim')
     Plug 'kyazdani42/nvim-web-devicons'
 
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'lewis6991/gitsigns.nvim', {'tag': 'v0.5'}
+    Plug 'lewis6991/gitsigns.nvim', {'tag': 'v0.6'}
     Plug 'kdheepak/lazygit.nvim'
 
     Plug 'ray-x/lsp_signature.nvim'
