@@ -315,7 +315,7 @@ endif
 nmap <Leader>wo :Files ~/vimwiki/<return>
 
 """ vim-zettel
-let g:zettel_fzf_command = "ag --column -o '(?<=^title:).*'"
+let g:zettel_fzf_command = "ag --column -o '(?<=^title:).*' *.md"
 nmap <leader>zo :ZettelOpen<return>
 nmap <leader>zn :ZettelNew 
 
