@@ -33,13 +33,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter', {'tag': '2.7.0'}
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive', {'tag': 'v3.7'}
-Plug 'lervag/vimtex', {'tag': 'v2.11'}
+Plug 'lervag/vimtex', {'tag': 'v2.12'}
 Plug 'machakann/vim-sandwich'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'jlanzarotta/bufexplorer', {'tag': 'v.7.4.25'}
 
-Plug 'vimwiki/vimwiki', {'tag': 'v2022.12.02'}
+Plug 'vimwiki/vimwiki', {'tag': 'v2023.04.04_1'}
 Plug 'michal-h21/vim-zettel'
 "Plug 'tools-life/taskwiki'
 
@@ -79,7 +79,7 @@ if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter-context'
     Plug 'nvim-treesitter/playground'
 
-    Plug 'folke/which-key.nvim', {'tag': 'v1.1.0'}
+    Plug 'folke/which-key.nvim', {'tag': 'v1.4.0'}
 else
     Plug 'tpope/vim-sensible'
     Plug 'lifepillar/vim-solarized8'
