@@ -224,6 +224,10 @@ nnoremap cN *``cgN
 " call the lazygit plugin
 nnoremap <silent> <leader>lg :LazyGit<CR>
 
+" evaluate selection with lua (could also use `eval` for vimscript or py3eval
+" for Python)
+xnoremap <Leader>e c<C-R>=luaeval(@")<CR><Esc>
+
 
 " User-defined Commands
 """"""""""""""""""""""""
