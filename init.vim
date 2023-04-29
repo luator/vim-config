@@ -327,9 +327,6 @@ let g:zettel_fzf_command = "ag --column -o '(?<=^title:).*' *.md"
 nmap <leader>zo :ZettelOpen<return>
 nmap <leader>zn :ZettelNew 
 
-""" editorconfig
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
 
 """ vsnip
 let g:vsnip_snippet_dir = fnamemodify(expand("$MYVIMRC"), ":p:h") . '/vsnip'
