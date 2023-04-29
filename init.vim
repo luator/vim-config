@@ -79,6 +79,10 @@ if has('nvim')
     Plug 'nvim-treesitter/nvim-treesitter-context'
     Plug 'nvim-treesitter/playground'
 
+    " for better folding
+    Plug 'kevinhwang91/promise-async', {'tag': 'v1.0.0'} " needed by nvim-ufo
+    Plug 'kevinhwang91/nvim-ufo', {'tag': 'v1.3.0'}
+
     Plug 'folke/which-key.nvim', {'tag': 'v1.4.0'}
 else
     Plug 'tpope/vim-sensible'
