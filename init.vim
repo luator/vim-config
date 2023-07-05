@@ -33,7 +33,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter', {'tag': '2.7.0'}
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive', {'tag': 'v3.7'}
-Plug 'lervag/vimtex', {'tag': 'v2.12'}
+Plug 'lervag/vimtex', {'tag': 'v2.13'}
 Plug 'machakann/vim-sandwich'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
@@ -83,7 +83,7 @@ if has('nvim')
     Plug 'kevinhwang91/promise-async', {'tag': 'v1.0.0'} " needed by nvim-ufo
     Plug 'kevinhwang91/nvim-ufo', {'tag': 'v1.3.0'}
 
-    Plug 'folke/which-key.nvim', {'tag': 'v1.4.0'}
+    Plug 'folke/which-key.nvim', {'tag': 'v1.4.3'}
 else
     Plug 'tpope/vim-sensible'
     Plug 'lifepillar/vim-solarized8'
