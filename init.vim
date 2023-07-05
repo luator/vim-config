@@ -257,6 +257,11 @@ command Bc bp | bd#
 " git commit in new tab (so the full window is used)
 command Commit tab Git commit -v
 
+" basic title case conversion of the current line
+" capitalises first and last word and all with 4 or more characters
+" https://www.reddit.com/r/vim/comments/dsuiqz/comment/f6rq63f/?utm_source=share&utm_medium=web2x&context=3
+command TitleCase s/\<\w\{4,}\|^\w\+\|\w\+$\>/\=toupper(submatch(0)[0]).submatch(0)[1:]/g
+
 
 
 " file type mappings
