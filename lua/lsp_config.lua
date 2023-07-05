@@ -49,12 +49,19 @@ require("lsp_signature").setup({
     hint_enable=false,
 })
 
-local cmp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+-- for ufo-nvim (folding), see folding.lua
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
+
 
 if vim.lsp then
     lspconfig.pylsp.setup{
         on_attach = on_attach,
-        capabilities = cmp_capabilities,
+        capabilities = capabilities,
         settings = {
             pylsp = {
                 configurationSources = { "flake8" },
@@ -88,7 +95,7 @@ if vim.lsp then
     -- for f in build/*/compile_commands.json; do ln -s $(realpath $f) $(echo $f | sed 's/build/src/'); done
     lspconfig.clangd.setup{
         on_attach = on_attach,
-        capabilities = cmp_capabilities,
+        capabilities = capabilities,
         cmd = { "clangd", "--background-index" },
     }
 
