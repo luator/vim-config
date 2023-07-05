@@ -297,7 +297,7 @@ let g:NERDDefaultAlign = 'left'
 """ fzf
 " in vim use ag as search command which by default already excludes a lot of
 " undesired files
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --hidden -g ""'
 
 
 """ Riv (reST plugin)
@@ -306,7 +306,7 @@ let g:riv_disable_folding = 1
 
 """ Ack
 " use ag instead of ack
-let g:ackprg = 'ag --vimgrep'
+let g:ackprg = 'ag --vimgrep --hidden'
 
 
 """ vimwiki
