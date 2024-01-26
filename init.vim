@@ -312,7 +312,7 @@ let g:ackprg = 'ag --vimgrep --hidden'
 
 
 """ vimwiki
-let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md', 'auto-tags': 1}]
+let g:vimwiki_list = [{'syntax': 'markdown', 'ext': '.md', 'auto-tags': 1, 'custom_wiki2html': '~/.config/nvim/bin/vimwiki2html.sh', 'diary_frequency': 'yearly'}]
 let g:vimwiki_ext2syntax = {'.md': 'markdown', '.markdown': 'markdown'}
 
 " This will make sure vimwiki will only set the filetype of markdown files
