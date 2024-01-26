@@ -48,10 +48,10 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
     },
     sources = {
-        { name = 'nvim_lsp' },
+        { name = 'nvim_lsp', max_item_count = 10 },
         -- { name = 'buffer' },
-        { name = 'path' },
-        { name = 'vsnip' },
+        { name = 'path', max_item_count = 5 },
+        { name = 'vsnip', max_item_count = 5 },
     },
     sorting = {
         comparators = {
