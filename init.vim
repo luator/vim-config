@@ -84,6 +84,8 @@ if has('nvim')
     Plug 'kevinhwang91/nvim-ufo', {'tag': 'v1.3.0'}
 
     Plug 'folke/which-key.nvim', {'tag': 'v1.6.0'}
+
+    Plug 'stevearc/aerial.nvim', {'tag': 'v1.3.0'}
 else
     Plug 'tpope/vim-sensible'
     Plug 'lifepillar/vim-solarized8'
@@ -380,6 +382,8 @@ if has('nvim')
     lua require('gitsigns_config')
 
     lua require('feline_statusline')
+
+    lua require('config_aerial')
 
     lua require('which-key').setup()
 
