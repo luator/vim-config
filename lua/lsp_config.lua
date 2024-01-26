@@ -77,7 +77,12 @@ if vim.lsp then
                         enabled = false
                     },
                     flake8 = {
-                        enabled = true
+                        enabled = false
+                    },
+                    ruff = {
+                        enabled = true,
+                        -- do not configure here, rely on .config/ruff/ruff.toml
+                        -- for defaults
                     },
 
                     ["pylsp-mypy"] = {
