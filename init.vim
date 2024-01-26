@@ -342,6 +342,9 @@ let g:vsnip_snippet_dir = fnamemodify(expand("$MYVIMRC"), ":p:h") . '/vsnip'
 
 """ goyo
 
+let g:goyo_width = 88
+let g:goyo_height = 90
+
 function! s:goyo_enter()
     lua require('gitsigns').detach()
 endfunction
