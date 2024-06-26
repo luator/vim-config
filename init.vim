@@ -33,13 +33,13 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdcommenter', {'tag': '2.7.0'}
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive', {'tag': 'v3.7'}
-Plug 'lervag/vimtex', {'tag': 'v2.14'}
+Plug 'lervag/vimtex', {'tag': 'v2.15'}
 Plug 'machakann/vim-sandwich'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'jlanzarotta/bufexplorer', {'tag': 'v7.4.26'}
 
-Plug 'vimwiki/vimwiki', {'tag': 'v2023.04.04_1'}
+Plug 'vimwiki/vimwiki', {'tag': 'v2024.01.24'}
 Plug 'michal-h21/vim-zettel'
 "Plug 'tools-life/taskwiki'
 
@@ -69,7 +69,7 @@ if has('nvim')
     Plug 'kyazdani42/nvim-web-devicons'
 
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'lewis6991/gitsigns.nvim', {'tag': 'v0.6'}
+    Plug 'lewis6991/gitsigns.nvim', {'tag': 'v0.8.1'}
     Plug 'kdheepak/lazygit.nvim'
 
     Plug 'ray-x/lsp_signature.nvim'
@@ -81,11 +81,11 @@ if has('nvim')
 
     " for better folding
     Plug 'kevinhwang91/promise-async', {'tag': 'v1.0.0'} " needed by nvim-ufo
-    Plug 'kevinhwang91/nvim-ufo', {'tag': 'v1.3.0'}
+    Plug 'kevinhwang91/nvim-ufo', {'tag': 'v1.4.0'}
 
     Plug 'folke/which-key.nvim', {'tag': 'v1.6.0'}
 
-    Plug 'stevearc/aerial.nvim', {'tag': 'v1.3.0'}
+    Plug 'stevearc/aerial.nvim', {'tag': 'v1.7.0'}
 else
     Plug 'tpope/vim-sensible'
     Plug 'lifepillar/vim-solarized8'
