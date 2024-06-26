@@ -115,8 +115,9 @@ set shiftwidth=4
 set expandtab
 set linebreak
 set showbreak=…
-set textwidth=80
+set textwidth=88
 "set colorcolumn=80,120
+set breakindent
 
 " Visualize the line were tw will break (http://superuser.com/a/207548/226624)
 set colorcolumn=+0
@@ -152,6 +153,9 @@ set tags=./tags;/
 " Enable spell check and set language to british english.
 set spell
 set spelllang=en_gb
+
+" Add two spaces between sentences when joining lines.
+set joinspaces
 
 
 " set colorscheme
