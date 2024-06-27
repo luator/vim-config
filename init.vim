@@ -86,6 +86,8 @@ if has('nvim')
     Plug 'folke/which-key.nvim', {'tag': 'v1.6.0'}
 
     Plug 'stevearc/aerial.nvim', {'tag': 'v1.7.0'}
+
+    Plug 'zbirenbaum/copilot.lua' ", { 'on': 'Copilot' }
 else
     Plug 'tpope/vim-sensible'
     Plug 'lifepillar/vim-solarized8'
@@ -393,6 +395,8 @@ if has('nvim')
     lua require('config_aerial')
 
     lua require('which-key').setup()
+
+    lua require("copilot_config")
 
     """ nvim-cmp
     set completeopt=menu,menuone,noselect
