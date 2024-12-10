@@ -37,7 +37,7 @@ Plug 'lervag/vimtex', {'tag': 'v2.15'}
 Plug 'machakann/vim-sandwich'
 Plug 'mileszs/ack.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
-Plug 'jlanzarotta/bufexplorer', {'tag': 'v7.4.26'}
+Plug 'jlanzarotta/bufexplorer', {'tag': '7.4.28'}
 
 Plug 'vimwiki/vimwiki', {'tag': 'v2024.01.24'}
 Plug 'michal-h21/vim-zettel'
@@ -69,7 +69,7 @@ if has('nvim')
     Plug 'kyazdani42/nvim-web-devicons'
 
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'lewis6991/gitsigns.nvim', {'tag': 'v0.8.1'}
+    Plug 'lewis6991/gitsigns.nvim', {'tag': 'v0.9.0'}
     Plug 'kdheepak/lazygit.nvim'
 
     Plug 'ray-x/lsp_signature.nvim'
@@ -83,9 +83,9 @@ if has('nvim')
     Plug 'kevinhwang91/promise-async', {'tag': 'v1.0.0'} " needed by nvim-ufo
     Plug 'kevinhwang91/nvim-ufo', {'tag': 'v1.4.0'}
 
-    Plug 'folke/which-key.nvim', {'tag': 'v1.6.0'}
+    Plug 'folke/which-key.nvim', {'tag': 'v3.14.1'}
 
-    Plug 'stevearc/aerial.nvim', {'tag': 'v1.7.0'}
+    Plug 'stevearc/aerial.nvim', {'tag': 'v2.3.1'}
 
     Plug 'zbirenbaum/copilot.lua' ", { 'on': 'Copilot' }
 else
