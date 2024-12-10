@@ -96,12 +96,56 @@ if vim.lsp then
         }
     }
 
+
+    --
+    -- clangd
+    --
+
+    -- find a clangd container (clangd.sif) in the current directory or upwards
+    local function find_clangd_container()
+        -- The name of the current buffer
+        local bufname = vim.api.nvim_buf_get_name(0)
+
+        -- Turned into a filename
+        local filename = lspconfig.util.path.is_absolute(bufname) and bufname or lspconfig.util.path.join(vim.loop.cwd(), bufname)
+
+        local dir = vim.fn.fnamemodify(filename, ':p:h')
+
+        -- search for clangd.sif from current directory upwards
+        local container_file = dir .. "/clangd.sif"
+        print(dir ~= "/")
+        while vim.fn.filereadable(container_file) == 0 and dir ~= "/" do
+            dir = vim.fn.fnamemodify(dir, ":h")
+            container_file = dir .. "/clangd.sif"
+        end
+
+        if vim.fn.filereadable(container_file) == 1 then
+            return container_file
+        end
+        return false
+    end
+
+    local function construct_clangd_command()
+        -- arguments are for improved performance
+        local clangd_cmd = {
+            "clangd", "--background-index", "-j=4", "--malloc-trim",
+            "--pch-storage=memory"
+        }
+
+        local container = find_clangd_container()
+        if container then
+            return {"apptainer", "exec", "-e", container, unpack(clangd_cmd)}
+        else
+            return clangd_cmd
+        end
+    end
+
     -- colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=1
     -- for f in build/*/compile_commands.json; do ln -s $(realpath $f) $(echo $f | sed 's/build/src/'); done
     lspconfig.clangd.setup{
         on_attach = on_attach,
         capabilities = capabilities,
-        cmd = { "clangd", "--background-index" },
+        cmd = construct_clangd_command(),
     }
 
     --Enable (broadcasting) snippet capability for completion
