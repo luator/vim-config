@@ -174,4 +174,9 @@ if vim.lsp then
         update_in_insert = false,
     }
     )
+
+    -- Add boarder to diagnostic float panels
+    vim.diagnostic.config {
+        float = { border = "rounded" },
+    }
 end
