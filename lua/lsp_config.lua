@@ -57,6 +57,10 @@ capabilities.textDocument.foldingRange = {
     lineFoldingOnly = true
 }
 
+-- seems to be needed for clangd when used in combination with other LSPs (e.g. Copilot)
+-- fixes "multiple different client offset_encodings detected for buffer"-warning
+capabilities.offsetEncoding = { "utf-16" }
+
 
 if vim.lsp then
     lspconfig.pylsp.setup{
