@@ -88,6 +88,8 @@ if has('nvim')
     Plug 'stevearc/aerial.nvim', {'tag': 'v2.3.1'}
 
     Plug 'zbirenbaum/copilot.lua' ", { 'on': 'Copilot' }
+    Plug 'zbirenbaum/copilot-cmp'
+    Plug 'CopilotC-Nvim/CopilotChat.nvim', {'tag': 'v3.3.2'}
 else
     Plug 'tpope/vim-sensible'
     Plug 'lifepillar/vim-solarized8'
