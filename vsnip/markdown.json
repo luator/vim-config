@@ -1,0 +1,7 @@
+{
+    "hd": {
+        "prefix": ["hd"],
+        "body": ["## ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}"],
+        "description": "Level 2 headline with date."
+    },
+}
