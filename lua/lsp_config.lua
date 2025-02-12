@@ -1,5 +1,7 @@
 --vim.lsp.set_log_level("debug")
 
+home=os.getenv("HOME")
+
 local lspconfig = require('lspconfig')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -105,13 +107,23 @@ if vim.lsp then
     -- clangd
     --
 
+    -- this is the old implementation of lspconfig.utils.is_absolute
+    -- can be replaced with vim.fn.isabsolutepath in nvim 0.11
+    -- see https://github.com/neovim/nvim-lspconfig/pull/3511
+    local function is_absolute(filename)
+        if iswin then
+            return filename:match '^%a:' or filename:match '^\\\\'
+        else
+            return filename:match '^/'
+        end
+    end
     -- find a clangd container (clangd.sif) in the current directory or upwards
     local function find_clangd_container()
         -- The name of the current buffer
         local bufname = vim.api.nvim_buf_get_name(0)
 
         -- Turned into a filename
-        local filename = lspconfig.util.path.is_absolute(bufname) and bufname or lspconfig.util.path.join(vim.loop.cwd(), bufname)
+        local filename = is_absolute(bufname) and bufname or vim.fs.joinpath(vim.loop.cwd(), bufname)
 
         local dir = vim.fn.fnamemodify(filename, ':p:h')
 
