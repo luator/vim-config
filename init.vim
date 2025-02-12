@@ -193,6 +193,10 @@ endif
 let g:markdown_folding=1
 
 
+" Custom digraphs
+digraphs SS 7838  " upper-case ß
+
+
 " Key Bindings
 """""""""""""""
 
