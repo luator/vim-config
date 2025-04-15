@@ -102,6 +102,9 @@ if vim.lsp then
         }
     }
 
+    if vim.fn.executable("pyright-langserver") == 1 then
+        lspconfig.pyright.setup{}
+    end
 
     --
     -- clangd
