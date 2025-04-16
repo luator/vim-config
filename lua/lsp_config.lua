@@ -63,6 +63,11 @@ capabilities.textDocument.foldingRange = {
 -- fixes "multiple different client offset_encodings detected for buffer"-warning
 capabilities.offsetEncoding = { "utf-16" }
 
+-- Check if pylsp_black (package python-lsp-black) is installed.  This is later used to
+-- decide if ruff formatting should be enabled or not.
+local has_pylsp_black = vim.system(
+    {"python3", "-c", "import importlib.util as u; import sys; sys.exit(0 if u.find_spec('pylsp_black') else 1)"}
+):wait()["code"] == 0
 
 if vim.lsp then
     lspconfig.pylsp.setup{
@@ -87,8 +92,7 @@ if vim.lsp then
                     },
                     ruff = {
                         enabled = true,
-                        -- do not configure here, rely on .config/ruff/ruff.toml
-                        -- for defaults
+                        formatEnabled = not has_pylsp_black,
                     },
 
                     ["pylsp-mypy"] = {
