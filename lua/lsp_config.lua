@@ -136,7 +136,6 @@ if vim.lsp then
 
         -- search for clangd.sif from current directory upwards
         local container_file = dir .. "/clangd.sif"
-        print(dir ~= "/")
         while vim.fn.filereadable(container_file) == 0 and dir ~= "/" do
             dir = vim.fn.fnamemodify(dir, ":h")
             container_file = dir .. "/clangd.sif"
