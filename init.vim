@@ -137,6 +137,9 @@ set number
 set list
 set listchars=tab:⇥\ ,trail:·
 
+" border around all floating windows (like lsp hover)
+set winborder=rounded
+
 " Bash-like tab completion (http://stackoverflow.com/questions/526858)
 "  1st tab: complete as much as possible
 "  2nd tab: show list
