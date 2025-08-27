@@ -390,9 +390,9 @@ if has('nvim')
     lua require('lsp_config')
 
     lua require('treesitter')
-    "set foldmethod=expr
-    "set foldexpr=nvim_treesitter#foldexpr()
-    "set foldlevel=99  " mostly disable fold by default
+    hi! link TreesitterContext ColorColumn
+    hi TreesitterContextBottom gui=underline guisp=Grey
+    hi TreesitterContextLineNumberBottom gui=underline guisp=Grey
 
     lua require('folding')
     set fillchars+=foldopen:,foldsep:│,foldclose:
