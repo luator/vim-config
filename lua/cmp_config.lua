@@ -1,7 +1,14 @@
 -- helper functions for tab mapping from https://github.com/hrsh7th/nvim-cmp/wiki/Example-mappings
+--local has_words_before = function()
+--    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+--    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+--end
+
+-- recommended implementation from zbierenbaum/copilot-cmp README
 local has_words_before = function()
-    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
 end
 
 local feedkey = function(key, mode)
@@ -18,15 +25,19 @@ cmp.setup({
             vim.fn["vsnip#anonymous"](args.body)
         end,
     },
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
     mapping = {
-        --['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
+            if cmp.visible() and has_words_before() then
+                --cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
                 cmp.select_next_item()
-            elseif vim.fn["vsnip#available"](1) == 1 then
-                feedkey("<Plug>(vsnip-expand-or-jump)", "")
-            elseif has_words_before() then
-                cmp.complete()
+            --elseif vim.fn["vsnip#available"](1) == 1 then
+            --    feedkey("<Plug>(vsnip-expand-or-jump)", "")
+            --elseif has_words_before() then
+            --    cmp.complete()
             else
                 -- The fallback function sends a already mapped key. In this
                 -- case, it's probably `<Tab>`.
@@ -37,8 +48,8 @@ cmp.setup({
         ["<S-Tab>"] = cmp.mapping(function()
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif vim.fn["vsnip#jumpable"](-1) == 1 then
-                feedkey("<Plug>(vsnip-jump-prev)", "")
+            --elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+            --    feedkey("<Plug>(vsnip-jump-prev)", "")
             end
         end, { "i", "s" }),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -48,6 +59,7 @@ cmp.setup({
         ['<CR>'] = cmp.mapping.confirm({ select = false }),
     },
     sources = {
+        -- { name = "copilot", max_item_count = 3 },
         { name = 'nvim_lsp', max_item_count = 10 },
         -- { name = 'buffer' },
         { name = 'path', max_item_count = 5 },
