@@ -1,54 +1,52 @@
 --vim.lsp.set_log_level("debug")
 
-home=os.getenv("HOME")
+--home=os.getenv("HOME")
 
-local lspconfig = require('lspconfig')
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
 
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-  -- automatically close preview window after auto-complete
-  vim.api.nvim_command('autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif')
+        -- Mappings.
+        local function km_set(mode, lhs, rhs)
+            vim.keymap.set(mode, lhs, rhs, { buffer = args.buf })
+        end
+        km_set('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
+        km_set('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
+        km_set('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
+        km_set('n', '<space>f', '<cmd>lua vim.lsp.buf.format{async=true}<CR>')
+        km_set('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
+        km_set('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
+        km_set('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+        km_set('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>')
 
-  -- Mappings.
-  local opts = { noremap=true, silent=true }
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.format{async=true}<CR>', opts)
-  buf_set_keymap('n', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+        -- Highlight references on hovering
+        -- This expects highlight groups LspReference{Text,Read,Write} to be defined
+        if client.server_capabilities.documentHighlightProvider then
+            vim.api.nvim_exec([[
+            augroup lsp_document_highlight
+              autocmd! * <buffer>
+              autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+              autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+          ]], false)
+        end
 
-  -- Highlight references on hovering
-  -- This expects highlight groups LspReference{Text,Read,Write} to be defined
-  if client.server_capabilities.documentHighlightProvider then
-    vim.api.nvim_exec([[
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]], false)
-  end
+        if client.server_capabilities.documentHighlightProvider then
+            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+                callback = vim.lsp.buf.document_highlight,
+            })
 
-  require'lsp_signature'.on_attach()
-end
+            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+                callback = vim.lsp.buf.clear_references,
+            })
+        end
+    end
+})
 
 require("lsp_signature").setup({
-    doc_lines=0,
-    hint_enable=false,
+    doc_lines = 0,
+    hint_enable = false,
+    --floating_window_above_cur_line = false,
 })
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -66,12 +64,12 @@ capabilities.offsetEncoding = { "utf-16" }
 -- Check if pylsp_black (package python-lsp-black) is installed.  This is later used to
 -- decide if ruff formatting should be enabled or not.
 local has_pylsp_black = vim.system(
-    {"python3", "-c", "import importlib.util as u; import sys; sys.exit(0 if u.find_spec('pylsp_black') else 1)"}
+    { "python3", "-c", "import importlib.util as u; import sys; sys.exit(0 if u.find_spec('pylsp_black') else 1)" }
 ):wait()["code"] == 0
 
 if vim.lsp then
-    lspconfig.pylsp.setup{
-        on_attach = on_attach,
+    vim.lsp.config('pylsp', {
+        --on_attach = on_attach,
         capabilities = capabilities,
         settings = {
             pylsp = {
@@ -104,33 +102,29 @@ if vim.lsp then
                 }
             }
         }
-    }
+    })
+    vim.lsp.enable('pylsp')
 
     if vim.fn.executable("pyright-langserver") == 1 then
-        lspconfig.pyright.setup{}
+        vim.lsp.enable('pyright')
     end
 
     --
     -- clangd
     --
-
-    -- this is the old implementation of lspconfig.utils.is_absolute
-    -- can be replaced with vim.fn.isabsolutepath in nvim 0.11
-    -- see https://github.com/neovim/nvim-lspconfig/pull/3511
-    local function is_absolute(filename)
-        if iswin then
-            return filename:match '^%a:' or filename:match '^\\\\'
-        else
-            return filename:match '^/'
-        end
-    end
-    -- find a clangd container (clangd.sif) in the current directory or upwards
+    -- Search for an Apptainer image "clangd.sif", starting from the current
+    -- directory upwards.  If found, use it to run clangd, otherwise run clangd
+    -- without container.
+    --
+    -- The idea is that at the root of each container-based project, the
+    -- corresponding container can be symlinked with name `clangd.sif`.  Then
+    -- the same config should work for all projects.
     local function find_clangd_container()
         -- The name of the current buffer
         local bufname = vim.api.nvim_buf_get_name(0)
 
         -- Turned into a filename
-        local filename = is_absolute(bufname) and bufname or vim.fs.joinpath(vim.loop.cwd(), bufname)
+        local filename = vim.fn.isabsolutepath(bufname) and bufname or vim.fs.joinpath(vim.loop.cwd(), bufname)
 
         local dir = vim.fn.fnamemodify(filename, ':p:h')
 
@@ -156,7 +150,7 @@ if vim.lsp then
 
         local container = find_clangd_container()
         if container then
-            return {"apptainer", "exec", "-e", container, unpack(clangd_cmd)}
+            return { "apptainer", "exec", "-e", container, unpack(clangd_cmd) }
         else
             return clangd_cmd
         end
@@ -164,11 +158,23 @@ if vim.lsp then
 
     -- colcon build --cmake-args -DCMAKE_EXPORT_COMPILE_COMMANDS=1
     -- for f in build/*/compile_commands.json; do ln -s $(realpath $f) $(echo $f | sed 's/build/src/'); done
-    lspconfig.clangd.setup{
-        on_attach = on_attach,
+    vim.lsp.config('clangd', {
         capabilities = capabilities,
         cmd = construct_clangd_command(),
-    }
+    })
+    vim.lsp.enable('clangd')
+
+    -- latex
+    vim.lsp.enable('texlab')
+
+    -- rust
+    vim.lsp.enable('rust_analyzer')
+
+    -- sphinx
+    vim.lsp.enable('esbonio')
+
+    -- lua
+    vim.lsp.enable('lua_ls')
 
     --Enable (broadcasting) snippet capability for completion
     local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -176,24 +182,24 @@ if vim.lsp then
 
     -- Settings for displaying LSP diagnostics
     vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        -- This will disable virtual text, like doing:
-        -- let g:diagnostic_enable_virtual_text = 0
-        virtual_text = false,
+        vim.lsp.diagnostic.on_publish_diagnostics, {
+            -- This will disable virtual text, like doing:
+            -- let g:diagnostic_enable_virtual_text = 0
+            virtual_text = false,
 
-        -- This is similar to:
-        -- let g:diagnostic_show_sign = 1
-        -- To configure sign display,
-        --  see: ":help vim.lsp.diagnostic.set_signs()"
-        signs = true,
+            -- This is similar to:
+            -- let g:diagnostic_show_sign = 1
+            -- To configure sign display,
+            --  see: ":help vim.lsp.diagnostic.set_signs()"
+            signs = true,
 
-        -- This is similar to:
-        -- "let g:diagnostic_insert_delay = 1"
-        update_in_insert = false,
-    }
+            -- This is similar to:
+            -- "let g:diagnostic_insert_delay = 1"
+            update_in_insert = false,
+        }
     )
 
-    -- Add boarder to diagnostic float panels
+    -- Add border to diagnostic float panels
     vim.diagnostic.config {
         float = { border = "rounded" },
     }

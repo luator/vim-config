@@ -1,1 +1,1 @@
-noremap <F2> :ClangdSwitchSourceHeader<CR>
+noremap <F2> :LspClangdSwitchSourceHeader<CR>
