@@ -306,9 +306,10 @@ let g:NERDDefaultAlign = 'left'
 "let g:ctrlp_working_path_mode = 'wra'
 
 """ fzf
-" in vim use ag as search command which by default already excludes a lot of
+" in vim use ag/fd as search command which by default already excludes a lot of
 " undesired files
 let $FZF_DEFAULT_COMMAND = 'ag --hidden -g ""'
+"let $FZF_DEFAULT_COMMAND = 'fdfind'  " fd is a bit faster
 
 
 """ Riv (reST plugin)
@@ -373,6 +374,8 @@ let g:maximizer_default_mapping_key = '<F5>'
 if has('nvim')
     " Neovim-specific configuration
     """""""""""""""""""""""""""""""
+
+    let g:python3_host_prog = '~/venv/nvim/bin/python'
 
     " Highlight yanked text for a brief moment
     au TextYankPost * silent! lua vim.highlight.on_yank()
