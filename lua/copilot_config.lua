@@ -49,7 +49,7 @@ require('copilot').setup({
       rust = true,
       sh = true,
   },
-  copilot_node_command = "/home/felixwidmaier/.local/bin/node_latest.sif",
+  --copilot_node_command = "/home/felixwidmaier/.local/bin/node_latest.sif",
   server_opts_overrides = {},
 })
 
