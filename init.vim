@@ -63,7 +63,9 @@ if has('nvim')
     Plug 'rafamadriz/friendly-snippets'
 
     "Plug 'ishan9299/nvim-solarized-lua'
-    Plug 'tobi-wan-kenobi/zengarden'
+    "Plug 'tobi-wan-kenobi/zengarden'
+    Plug 'luator/zengarden', {'branch': 'luator'}  " my customised version
+    Plug 'rktjmp/lush.nvim'
 
     Plug 'famiu/feline.nvim', {'tag': 'v1.1.3'}
     Plug 'kyazdani42/nvim-web-devicons'
@@ -172,17 +174,9 @@ set termguicolors
 if has('nvim')
     " this is lua-based so only works for nvim
     "colorscheme solarized
+
+    lua require("zengarden").setup({ italics = false })
     colorscheme zengarden
-
-    " some customisation of the colorscheme
-    highlight! link TSPunctBracket ZengardenFg1
-    highlight! link TSPunctDelimiter ZengardenFg1
-    highlight! link Operator ZengardenFg1
-
-    highlight! link LspReferenceText Visual
-    highlight! link LspReferenceRead Visual
-    highlight! link LspReferenceWrite Visual
-    highlight LspReferenceWrite cterm=reverse,bold gui=reverse,bold
 else
     colorscheme solarized8
 endif
